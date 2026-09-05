@@ -193,6 +193,17 @@
   .share-btns .copy:hover{border-color:var(--brand);}
   .share-btns button:disabled{opacity:.55; cursor:default;}
   .share-note{font-size:12.5px; color:var(--dim); margin:11px 0 0; text-align:center; word-break:keep-all; line-height:1.6;}
+
+  /* 카카오톡 안에서 열었을 때 뜨는 안내 */
+  .inapp{background:#FFF4E6; border:1.5px solid #F3C99B; border-radius:14px; padding:17px 18px; margin-bottom:14px;}
+  .inapp .k{font-size:15px; font-weight:900; color:var(--brand-dark); margin:0 0 8px;}
+  .inapp p{margin:0; font-size:13.8px; color:#7A5B3A; word-break:keep-all; line-height:1.7;}
+  .inapp p.sm{font-size:12.5px; color:#96755A; margin-top:10px;}
+  .inapp button{
+    display:block; width:100%; margin-top:13px; border:0; border-radius:11px; padding:14px;
+    background:var(--brand); color:#fff; font-family:inherit; font-size:15.5px; font-weight:700; cursor:pointer;
+  }
+  .inapp button:hover{background:var(--brand-dark);}
   /* 결과지 보기 화면 (이미지로 변환된 A4 두 장) */
   .rp-view{position:fixed; inset:0; z-index:60; background:#2A2724; display:flex; flex-direction:column;}
   .rp-view.hidden{display:none;}
@@ -1592,11 +1603,15 @@
     if (LAST && LAST.line) {
       lines.push('대학 라인 · ' + LAST.line.name);
     }
-    return lines.join('\n');
+    // 끝에 공백이나 줄바꿈이 남으면 카카오톡에서 빈 줄로 보인다.
+    return lines.join('\n').replace(/\s+$/, '');
   }
 
   function shareImages(){
     if (!REPORT_FILES.length) { shareNote('이미지를 아직 만들지 못했습니다. 잠시 후 다시 눌러 주세요.'); return; }
+
+    // 안드로이드 + 카카오톡 내장 화면이면 공유가 없으니 크롬으로 옮겨 연다.
+    if (!canShareFiles() && needsChrome()) { openInChrome(); return; }
 
     var files = shareFiles();
     if (canShareFiles()) {
@@ -1647,13 +1662,25 @@
     if (canShareFiles()) {
       share.textContent = '공유하기';
       shareNote('공유하기를 누르면 카카오톡을 고를 수 있습니다.');
-    } else if (canCopyImage()) {
+      return;
+    }
+
+    // 안드로이드에서 카카오톡에 딸린 화면으로 열면 공유 기능이 아예 없다.
+    if (needsChrome()) {
+      share.textContent = '크롬으로 열기';
+      shareNote('<b>카카오톡에 딸린 화면이라 공유가 되지 않습니다.</b><br>' +
+        '먼저 <b>이미지 저장</b>으로 결과지를 보관하신 뒤, 사진으로 보내 주세요.');
+      return;
+    }
+
+    if (canCopyImage()) {
       share.textContent = '이미지 복사';
       shareNote('휴대폰에서 열면 <b>공유하기</b>로 카카오톡에 바로 보낼 수 있습니다.<br>지금 기기에서는 복사해 붙여넣기 하세요.');
-    } else {
-      share.textContent = '이미지 저장';
-      shareNote('이 기기에서는 바로 공유가 되지 않습니다. 저장한 뒤 사진으로 보내 주세요.');
+      return;
     }
+
+    share.textContent = '이미지 저장';
+    shareNote('이 기기에서는 바로 공유가 되지 않습니다. 저장한 뒤 사진으로 보내 주세요.');
   }
 
   function reportNote(t){
@@ -1824,10 +1851,43 @@
   /* ─────────────────────────────────────────────
      흐름
      ───────────────────────────────────────────── */
+  /* 카카오톡·인스타 안에 딸린 브라우저로 열면, 안드로이드에서는 공유 기능이
+     아예 없다(내장 브라우저에 구현돼 있지 않다). 아이폰은 사파리 엔진이라 된다.
+     그래서 안드로이드 사용자에게만 크롬으로 옮겨 열도록 안내한다. */
+  function isAndroid(){
+    return /Android/i.test(navigator.userAgent || '');
+  }
+
+  function isInAppBrowser(){
+    var ua = navigator.userAgent || '';
+    return /KAKAOTALK|Instagram|FBAN|FBAV|NAVER\(inapp|DaumApps|Line\//i.test(ua);
+  }
+
+  function needsChrome(){
+    return isAndroid() && isInAppBrowser();
+  }
+
+  function openInChrome(){
+    var u = window.location.href.replace(/^https?:\/\//, '');
+    window.location.href = 'intent://' + u + '#Intent;scheme=https;package=com.android.chrome;end';
+  }
+
+  function inAppNotice(){
+    if (!needsChrome()) return '';
+    return '<div class="inapp">' +
+      '<p class="k">잠깐, 크롬으로 열어 주세요</p>' +
+      '<p>지금은 카카오톡에 딸린 화면이라 <b>결과지를 카카오톡으로 보내는 기능이 동작하지 않습니다.</b> ' +
+      '아래 버튼을 누르면 크롬으로 옮겨 열립니다. 진단은 크롬에서 시작해 주세요.</p>' +
+      '<button type="button" id="btnChrome">크롬으로 열기</button>' +
+      '<p class="sm">버튼이 안 되면 오른쪽 위 <b>⋮</b> 를 눌러 <b>다른 브라우저로 열기</b>를 골라 주세요.</p>' +
+    '</div>';
+  }
+
   function render(){
     var i = state.step;
     if (i === 0 && !state.started) {
-      stepsEl.innerHTML = '<div class="card">' +
+      stepsEl.innerHTML = inAppNotice() +
+        '<div class="card">' +
         '<p class="step-t">시작하기 전에</p>' +
         '<h2 class="step-h">10분이면 끝납니다</h2>' +
         '<p class="step-d">성적 입력과 61문항으로 나에게 맞는 전형과 계열, 대학 라인을 잡습니다.</p>' +
@@ -1835,6 +1895,8 @@
         '1. 기본 정보, 2. 성적 입력, 3. 과목 이수 6문항<br>4. 전형 적합도 30문항, 5. 계열 적합도 25문항</div>' +
         '<p class="step-d">맞고 틀린 답은 없습니다. 지금 내 모습 그대로 골라 주세요.</p>' +
         '</div>';
+      var cb = document.getElementById('btnChrome');
+      if (cb) cb.addEventListener('click', openInChrome);
       nextBtn.textContent = '시작하기';
       prevBtn.classList.add('hidden');
       setBar(0, '시작');
