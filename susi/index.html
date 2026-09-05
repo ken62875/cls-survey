@@ -228,6 +228,16 @@
   }
   .rp-view-bar button:hover{border-color:#fff;}
   #rpPreview{flex:1; overflow:auto; padding:14px; display:flex; flex-direction:column; gap:12px; align-items:center;}
+  /* 결과 화면 맨 아래, 다시 하기와 홈으로 */
+  .after{display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-top:16px;}
+  .after button,.after a{
+    display:flex; align-items:center; justify-content:center;
+    border:1.5px solid var(--line); background:var(--card); color:var(--dim);
+    border-radius:11px; padding:14px 10px; font-family:inherit; font-size:14.5px;
+    font-weight:700; cursor:pointer; text-decoration:none; transition:border-color .12s,color .12s;
+  }
+  .after button:hover,.after a:hover{border-color:var(--brand); color:var(--brand-dark);}
+
   #rpPreview img{width:100%; max-width:620px; display:block; border-radius:5px; box-shadow:0 8px 28px rgba(0,0,0,.4);}
   #rpPreview p{color:#BDB6AF; font-size:13.5px; text-align:center; margin:24px 0 0; line-height:1.7;}
   .rp-view-actions{
@@ -1205,6 +1215,11 @@
 
     h += '<p class="note" id="sendNote">진단 결과를 CLS에듀케이션으로 보내는 중입니다.</p>';
 
+    h += '<div class="after">' +
+      '<button type="button" id="btnRestart">설문 다시하기</button>' +
+      '<a href="/">홈으로</a>' +
+    '</div>';
+
     document.getElementById('result').innerHTML = h;
     document.getElementById('result').classList.remove('hidden');
     stepsEl.innerHTML = '';
@@ -1745,6 +1760,39 @@
     if (el) el.innerHTML = t;
   }
 
+  /* 처음부터 다시.
+     만들어 둔 결과지 이미지와 그래프까지 모두 비워야 다음 진단이 새로 그려진다. */
+  function restartSurvey(){
+    REPORT_FILES.forEach(function(f){
+      try { URL.revokeObjectURL(f.url); } catch (e) { /* 이미 정리된 경우 */ }
+    });
+    REPORT_FILES = [];
+    chartsReady = false;
+    chartsWaiting = [];
+    LAST = null;
+
+    var rp = document.getElementById('report');
+    if (rp) rp.innerHTML = '';
+    var pv = document.getElementById('rpPreview');
+    if (pv) pv.innerHTML = '';
+    closeView();
+
+    state = { step:0, started:false, info:{}, grades:{}, credit:[], types:{}, fields:{} };
+    TYPES.forEach(function(t){ state.types[t.key] = []; });
+    FIELDS.forEach(function(f){ state.fields[f.key] = []; });
+
+    var res = document.getElementById('result');
+    res.innerHTML = '';
+    res.classList.add('hidden');
+    document.getElementById('nav').classList.remove('hidden');
+    document.getElementById('barWrap').classList.remove('hidden');
+    flashEl.classList.remove('on');
+
+    render();
+    loadTally();
+    window.scrollTo({ top:0, behavior:'smooth' });
+  }
+
   function openView(){
     var v = document.getElementById('rpView');
     if (!v) return;
@@ -1801,6 +1849,9 @@
   function wireShare(){
     var open = document.getElementById('btnReport');
     if (open) open.addEventListener('click', showReport);
+
+    var again = document.getElementById('btnRestart');
+    if (again) again.addEventListener('click', restartSurvey);
 
     var close = document.getElementById('rpClose');
     if (close) close.addEventListener('click', closeView);
