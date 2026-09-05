@@ -1611,7 +1611,7 @@
     if (!REPORT_FILES.length) { shareNote('이미지를 아직 만들지 못했습니다. 잠시 후 다시 눌러 주세요.'); return; }
 
     // 안드로이드 + 카카오톡 내장 화면이면 공유가 없으니 크롬으로 옮겨 연다.
-    if (!canShareFiles() && needsChrome()) { openInChrome(); return; }
+    if (!canShareFiles() && needsChrome()) { openExternal(); return; }
 
     var files = shareFiles();
     if (canShareFiles()) {
@@ -1667,7 +1667,7 @@
 
     // 안드로이드에서 카카오톡에 딸린 화면으로 열면 공유 기능이 아예 없다.
     if (needsChrome()) {
-      share.textContent = '크롬으로 열기';
+      share.textContent = '브라우저로 열기';
       shareNote('<b>카카오톡에 딸린 화면이라 공유가 되지 않습니다.</b><br>' +
         '먼저 <b>이미지 저장</b>으로 결과지를 보관하신 뒤, 사진으로 보내 주세요.');
       return;
@@ -1867,19 +1867,43 @@
     return isAndroid() && isInAppBrowser();
   }
 
-  function openInChrome(){
-    var u = window.location.href.replace(/^https?:\/\//, '');
-    window.location.href = 'intent://' + u + '#Intent;scheme=https;package=com.android.chrome;end';
+  function isKakao(){
+    return /KAKAOTALK/i.test(navigator.userAgent || '');
+  }
+
+  /* 학생에게 "오른쪽 위 점 세 개를 눌러 다른 브라우저로 여세요"라고 안내하면 대부분 못 한다.
+     그래서 화면이 열리자마자 기본 브라우저로 자동으로 넘긴다.
+     - 카카오톡은 전용 통로가 있다 (openExternal)
+     - 그 밖의 앱은 안드로이드 표준 방식으로 넘긴다
+     크롬을 지정하지 않는다. 삼성 인터넷을 쓰는 학생이 훨씬 많고, 거기서도 공유가 잘 된다. */
+  function openExternal(){
+    var url = window.location.href;
+    if (isKakao()) {
+      window.location.href = 'kakaotalk://web/openExternal?url=' + encodeURIComponent(url);
+      return;
+    }
+    window.location.href = 'intent://' + url.replace(/^https?:\/\//, '') +
+      '#Intent;scheme=https;S.browser_fallback_url=' + encodeURIComponent(url) + ';end';
+  }
+
+  // 자동 전환은 한 번만 시도한다 (실패해도 같은 화면을 맴돌지 않도록)
+  function autoEscape(){
+    if (!needsChrome()) return;
+    try {
+      if (sessionStorage.getItem('escaped') === '1') return;
+      sessionStorage.setItem('escaped', '1');
+    } catch (e) { /* 저장이 막힌 브라우저면 그냥 한 번 시도한다 */ }
+    setTimeout(openExternal, 400);
   }
 
   function inAppNotice(){
     if (!needsChrome()) return '';
     return '<div class="inapp">' +
-      '<p class="k">잠깐, 크롬으로 열어 주세요</p>' +
-      '<p>지금은 카카오톡에 딸린 화면이라 <b>결과지를 카카오톡으로 보내는 기능이 동작하지 않습니다.</b> ' +
-      '아래 버튼을 누르면 크롬으로 옮겨 열립니다. 진단은 크롬에서 시작해 주세요.</p>' +
-      '<button type="button" id="btnChrome">크롬으로 열기</button>' +
-      '<p class="sm">버튼이 안 되면 오른쪽 위 <b>⋮</b> 를 눌러 <b>다른 브라우저로 열기</b>를 골라 주세요.</p>' +
+      '<p class="k">브라우저에서 열어 주세요</p>' +
+      '<p>지금 화면은 카카오톡에 딸린 창이라 <b>결과지를 저장하거나 보내는 기능이 동작하지 않습니다.</b> ' +
+      '잠시 뒤 휴대폰 기본 브라우저로 자동으로 열립니다. <b>그쪽 창에서 진단을 시작해 주세요.</b></p>' +
+      '<button type="button" id="btnChrome">브라우저로 열기</button>' +
+      '<p class="sm">자동으로 안 열리면 위 버튼을 눌러 주세요.</p>' +
     '</div>';
   }
 
@@ -1896,7 +1920,7 @@
         '<p class="step-d">맞고 틀린 답은 없습니다. 지금 내 모습 그대로 골라 주세요.</p>' +
         '</div>';
       var cb = document.getElementById('btnChrome');
-      if (cb) cb.addEventListener('click', openInChrome);
+      if (cb) cb.addEventListener('click', openExternal);
       nextBtn.textContent = '시작하기';
       prevBtn.classList.add('hidden');
       setBar(0, '시작');
@@ -2011,6 +2035,7 @@
     showResult();
   } else {
     render();
+    autoEscape();   // 카카오톡 안이면 기본 브라우저로 자동으로 넘긴다
   }
 })();
 </script>
