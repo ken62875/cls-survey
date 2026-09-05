@@ -105,6 +105,10 @@
   .btn.ghost{flex:0 0 auto; padding:15px 20px; background:transparent; border:1.5px solid var(--line); color:var(--dim); font-weight:500;}
   .btn.ghost:hover{border-color:var(--brand); color:var(--brand-dark);}
   .btn:focus-visible{outline:3px solid var(--brand-dark); outline-offset:2px;}
+  /* 좁은 화면에서 버튼이 셋이 되면 여백을 줄여 다음 버튼 자리를 지킨다 */
+  @media (max-width:400px){
+    .btn.ghost{padding:15px 12px; font-size:14.5px;}
+  }
 
   .flash{display:none; background:#FBEEEC; border:1px solid #E8CFC9; color:#8C3B2E; border-radius:10px; padding:12px 14px; font-size:13.5px; margin-top:12px; word-break:keep-all;}
   .flash.on{display:block;}
@@ -361,6 +365,7 @@
   <div class="flash" id="flash"></div>
 
   <div class="nav" id="nav">
+    <button class="btn ghost hidden" id="first" type="button">처음으로</button>
     <button class="btn ghost hidden" id="prev" type="button">이전</button>
     <button class="btn main" id="next" type="button">시작하기</button>
   </div>
@@ -693,6 +698,7 @@
   var flashEl = document.getElementById('flash');
   var nextBtn = document.getElementById('next');
   var prevBtn = document.getElementById('prev');
+  var firstBtn = document.getElementById('first');
   var progEl  = document.getElementById('prog');
   var stepNoEl = document.getElementById('stepNo');
   var stepNameEl = document.getElementById('stepName');
@@ -886,6 +892,31 @@
       state.fields[f.key] = collect(g, f.qs.length);
     }
     return null;
+  }
+
+  /* 지금 화면에 입력된 것을 있는 그대로 담아 둔다.
+     검증(vXxx)은 다 채웠을 때만 저장하기 때문에, 뒤로 가면 고르던 답이 날아갔다.
+     이전·처음으로를 누를 때 이 함수로 먼저 담아 두면 그대로 남는다. */
+  function capture(i){
+    if (i === 0) {
+      var ag = document.getElementById('i-agree');
+      state.info.name = val('i-name');
+      state.info.phone = val('i-phone');
+      state.info.school = val('i-school');
+      state.info.grade = val('i-grade');
+      state.info.agreed = !!(ag && ag.checked);
+    }
+    if (i === 1) {
+      state.grades.naesinKor = num('n-kor'); state.grades.naesinMath = num('n-math');
+      state.grades.naesinEng = num('n-eng');  state.grades.naesinInq = num('n-inq');
+      state.grades.naesinAll = num('n-all');
+      state.grades.mockKor = num('m-kor');   state.grades.mockMath = num('m-math');
+      state.grades.mockEng = num('m-eng');   state.grades.mockInq1 = num('m-inq1');
+      state.grades.mockInq2 = num('m-inq2'); state.grades.mathChoice = val('m-choice');
+    }
+    if (i === 2) state.credit = collect('credit', CREDIT.length);
+    if (i === 3) TYPES.forEach(function(t){ state.types[t.key] = collect('type_' + t.key, t.qs.length); });
+    if (i === 4) FIELDS.forEach(function(f){ state.fields[f.key] = collect('field_' + f.key, f.qs.length); });
   }
 
   /* ─────────────────────────────────────────────
@@ -1991,6 +2022,7 @@
       if (cb) cb.addEventListener('click', openExternal);
       nextBtn.textContent = '시작하기';
       prevBtn.classList.add('hidden');
+      firstBtn.classList.add('hidden');
       setBar(0, '시작');
       return;
     }
@@ -1999,6 +2031,7 @@
     stepsEl.innerHTML = S.build();
     nextBtn.textContent = (i === STEPS.length - 1) ? '결과 보기' : '다음';
     prevBtn.classList.toggle('hidden', i === 0);
+    firstBtn.classList.toggle('hidden', i === 0);   // 첫 단계에서는 돌아갈 곳이 없다
     setBar((i / STEPS.length) * 100, S.name, i + 1);
     restore(i);
     window.scrollTo({ top:0, behavior:'smooth' });
@@ -2012,14 +2045,18 @@
 
   // 이전으로 돌아왔을 때 고른 값 되살리기
   function restore(i){
-    if (i === 0 && state.info.name) {
-      document.getElementById('i-name').value = state.info.name;
-      document.getElementById('i-phone').value = state.info.phone;
-      document.getElementById('i-school').value = state.info.school || '';
-      document.getElementById('i-grade').value = state.info.grade;
-      document.getElementById('i-agree').checked = !!state.info.agreed;
+    // 일부만 채운 상태로 뒤로 갔다 와도 그대로 남아 있어야 한다
+    if (i === 0) {
+      var f = { 'i-name':state.info.name, 'i-phone':state.info.phone,
+                'i-school':state.info.school, 'i-grade':state.info.grade };
+      Object.keys(f).forEach(function(k){
+        var e = document.getElementById(k);
+        if (e && f[k]) e.value = f[k];
+      });
+      var ag = document.getElementById('i-agree');
+      if (ag) ag.checked = !!state.info.agreed;
     }
-    if (i === 1 && state.grades.naesinAll) {
+    if (i === 1) {
       var g = state.grades;
       var map = { 'n-kor':g.naesinKor,'n-math':g.naesinMath,'n-eng':g.naesinEng,'n-inq':g.naesinInq,'n-all':g.naesinAll,
                   'm-kor':g.mockKor,'m-math':g.mockMath,'m-eng':g.mockEng,'m-inq1':g.mockInq1,'m-inq2':g.mockInq2 };
@@ -2100,9 +2137,17 @@
 
   prevBtn.addEventListener('click', function(){
     if (state.step === 0) return;
-    STEPS[state.step].validate();
+    capture(state.step);            // 고르던 답을 그대로 담아 둔다
     flashEl.classList.remove('on');
     state.step--;
+    render();
+  });
+
+  firstBtn.addEventListener('click', function(){
+    if (state.step === 0) return;
+    capture(state.step);
+    flashEl.classList.remove('on');
+    state.step = 0;
     render();
   });
 
