@@ -721,7 +721,7 @@
       '<div style="height:14px"></div>' +
       '<div class="row">' +
         '<div class="field"><label class="f" for="i-name">학생 이름</label><input type="text" id="i-name" autocomplete="name" placeholder="예: 홍길동"></div>' +
-        '<div class="field"><label class="f" for="i-phone">연락처</label><input type="tel" id="i-phone" autocomplete="tel" placeholder="010-0000-0000"></div>' +
+        '<div class="field"><label class="f" for="i-phone">연락처</label><input type="tel" id="i-phone" autocomplete="tel" inputmode="numeric" maxlength="13" placeholder="010-0000-0000"></div>' +
       '</div>' +
       '<div class="row">' +
         '<div class="field"><label class="f" for="i-school">학교 <span class="hint">선택</span></label><input type="text" id="i-school" placeholder="예: 신현고"></div>' +
@@ -2050,6 +2050,43 @@
   document.addEventListener('change', function(e){
     if (e.target && e.target.type === 'radio') { markLabel(e.target); flashEl.classList.remove('on'); }
   });
+
+  /* 연락처 자동 서식
+     01000000000 처럼 붙여 쓰면 치는 대로 010-0000-0000 으로 바뀐다. */
+  function phoneMask(v){
+    var d = String(v || '').replace(/[^0-9]/g, '').slice(0, 11);
+    if (d.length <= 3) return d;
+    if (d.length <= 7) return d.slice(0, 3) + '-' + d.slice(3);
+    return d.slice(0, 3) + '-' + d.slice(3, 7) + '-' + d.slice(7);
+  }
+
+  function maskPhoneInput(el){
+    var before = el.value;
+    var masked = phoneMask(before);
+    if (masked === before) return;
+
+    // 가운데를 고치는 경우에도 커서가 끝으로 튀지 않도록 자릿수를 세어 되돌린다
+    var caret = el.selectionStart == null ? before.length : el.selectionStart;
+    var digitsBefore = before.slice(0, caret).replace(/[^0-9]/g, '').length;
+
+    el.value = masked;
+
+    var pos = 0, seen = 0;
+    while (pos < masked.length && seen < digitsBefore) {
+      if (masked.charAt(pos) >= '0' && masked.charAt(pos) <= '9') seen++;
+      pos++;
+    }
+    try { el.setSelectionRange(pos, pos); } catch (e) { /* 일부 브라우저는 지원하지 않는다 */ }
+  }
+
+  document.addEventListener('input', function(e){
+    if (e.target && e.target.id === 'i-phone') maskPhoneInput(e.target);
+  });
+
+  // 입력을 마치면 010-123-4567 같은 옛 번호도 자리에 맞춰 정리한다 (blur 는 위로 퍼지지 않아 캡처로 받는다)
+  document.addEventListener('blur', function(e){
+    if (e.target && e.target.id === 'i-phone') e.target.value = fmtPhone(e.target.value);
+  }, true);
 
   nextBtn.addEventListener('click', function(){
     if (!state.started) { state.started = true; state.step = 0; render(); return; }
