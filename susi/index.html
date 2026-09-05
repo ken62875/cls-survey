@@ -45,6 +45,13 @@
   h1{font-size:clamp(22px,5.6vw,30px); font-weight:900; line-height:1.34; margin:0 0 9px; letter-spacing:-.02em; word-break:keep-all;}
   h1 em{font-style:normal; color:var(--brand);}
   .sub{font-size:14.5px; color:var(--dim); margin:0; word-break:keep-all;}
+  .tally{
+    display:inline-flex; align-items:center; gap:6px; margin:14px 0 0;
+    background:var(--soft); border:1px solid var(--softline); border-radius:99px;
+    padding:7px 15px; font-size:13px; color:var(--brand-dark); word-break:keep-all;
+  }
+  .tally b{font-weight:900; font-variant-numeric:tabular-nums;}
+  .tally svg{flex:0 0 auto;}
 
   .bar-wrap{position:sticky; top:0; z-index:10; background:var(--bg); padding:10px 0 12px; margin-bottom:8px;}
   .bar{height:6px; background:#EDE8E2; border-radius:99px; overflow:hidden;}
@@ -335,6 +342,13 @@
     <p class="brandline">신내동 CLS에듀케이션</p>
     <h1>수시 지원 전략 <em>자가진단</em></h1>
     <p class="sub">나에게 맞는 전형은 교과일까, 학종일까, 논술일까.<br>성적과 61문항으로 방향을 잡습니다.</p>
+    <p class="tally hidden" id="tally">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M20 6 9 17l-5-5"></path>
+      </svg>
+      <span id="tallyText"></span>
+    </p>
   </header>
 
   <div class="bar-wrap" id="barWrap">
@@ -1786,6 +1800,48 @@
   var SHEET_URL = '';
   var SEND_TO_API = false;
 
+  /* 첫 화면에 보여 주는 진단 완료 인원.
+     TALLY_BASE 는 설문을 열기 전까지 학원에서 직접 상담한 학생 수다.
+     여기에 스프레드시트에 쌓인 줄 수를 더해 보여 준다.
+     시트가 연결되기 전에는 기준 숫자만 나온다. */
+  var TALLY_BASE = 52;
+
+  function hideTally(){
+    var box = document.getElementById('tally');
+    if (box) box.classList.add('hidden');
+  }
+
+  function showTally(n){
+    var box = document.getElementById('tally');
+    var txt = document.getElementById('tallyText');
+    if (!box || !txt) return;
+    txt.innerHTML = '지금까지 <b>' + n + '명</b>이 진단을 마쳤습니다';
+    box.classList.remove('hidden');
+  }
+
+  /* 시트에서 인원을 읽어 온다.
+     주소가 다르면 브라우저가 응답을 막으므로, 스크립트 형태로 받아 온다(JSONP). */
+  function loadTally(){
+    if (!SHEET_URL) { showTally(TALLY_BASE); return; }
+
+    var done = false;
+    var finish = function(n){
+      if (done) return;
+      done = true;
+      showTally(TALLY_BASE + (n > 0 ? n : 0));
+    };
+
+    window.__clsTally = function(res){ finish(res && res.n ? Number(res.n) : 0); };
+
+    var s = document.createElement('script');
+    s.src = SHEET_URL + (SHEET_URL.indexOf('?') < 0 ? '?' : '&') + 'count=1&callback=__clsTally';
+    s.onerror = function(){ finish(0); };
+    document.head.appendChild(s);
+
+    // 시트가 느리거나 응답이 없어도 화면이 비어 있지 않도록
+    setTimeout(function(){ finish(0); }, 3500);
+  }
+
   function flatScores(list){
     var o = {};
     list.forEach(function(s){ o[s.key] = s.score; });
@@ -1938,6 +1994,7 @@
       setBar(0, '시작');
       return;
     }
+    hideTally();          // 진단이 시작되면 첫 화면 문구는 접는다
     var S = STEPS[i];
     stepsEl.innerHTML = S.build();
     nextBtn.textContent = (i === STEPS.length - 1) ? '결과 보기' : '다음';
@@ -2047,6 +2104,7 @@
     showResult();
   } else {
     render();
+    loadTally();    // 첫 화면의 진단 완료 인원
     autoEscape();   // 카카오톡 안이면 기본 브라우저로 자동으로 넘긴다
   }
 })();
