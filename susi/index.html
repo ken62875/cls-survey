@@ -1575,15 +1575,35 @@
     return !!(navigator.clipboard && window.ClipboardItem && navigator.clipboard.write);
   }
 
+  /* 카카오톡으로 함께 넘어갈 문구.
+     누가 보낸 결과지인지 학원에서 바로 알 수 있도록 신원을 앞에 둔다.
+     맨 끝에 줄바꿈을 남기지 않는다 (빈 줄로 보인다). */
+  function shareText(){
+    var i = state.info || {};
+    var lines = ['[CLS에듀케이션] 수시 지원 전략 진단 결과지'];
+
+    var who = [i.name, i.school, i.grade].filter(Boolean).join(' · ');
+    if (who) lines.push(who);
+    if (i.phone) lines.push(i.phone);
+
+    if (LAST && LAST.typeScores && LAST.typeScores[0]) {
+      lines.push('추천 전형 · ' + LAST.typeScores[0].name);
+    }
+    if (LAST && LAST.line) {
+      lines.push('대학 라인 · ' + LAST.line.name);
+    }
+    return lines.join('\n');
+  }
+
   function shareImages(){
     if (!REPORT_FILES.length) { shareNote('이미지를 아직 만들지 못했습니다. 잠시 후 다시 눌러 주세요.'); return; }
 
     var files = shareFiles();
     if (canShareFiles()) {
+      // title 은 넘기지 않는다. 카카오톡이 title 과 text 를 따로 붙여 빈 줄이 생긴다.
       navigator.share({
         files: files,
-        title: '수시 지원 전략 진단 리포트',
-        text: 'CLS에듀케이션 수시 진단 결과지입니다.'
+        text: shareText()
       }).then(function(){
         shareNote('공유했습니다.');
       }, function(err){
