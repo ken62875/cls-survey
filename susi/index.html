@@ -225,22 +225,25 @@
      화면에서는 화면 밖에 두고, 인쇄할 때만 나타난다.
      이미지 저장은 이 영역을 그대로 캡처한다. */
   #report{position:absolute; left:-10000px; top:0; width:210mm; background:#fff;}
+  /* 높이를 A4 한 장으로 고정한다. 넘치면 아래 fitSheets() 가 내용을 살짝 줄여
+     정확히 한 장에 담는다. 이렇게 해야 인쇄할 때 페이지가 중간에 끊기지 않는다. */
   .sheet{
-    width:210mm; min-height:297mm; box-sizing:border-box; padding:13mm 14mm 16mm;
-    background:#fff; color:#1A1A1A; position:relative;
+    width:210mm; height:297mm; box-sizing:border-box; padding:12mm 13mm 15mm;
+    background:#fff; color:#1A1A1A; position:relative; overflow:hidden;
     font-size:9.6pt; line-height:1.55; letter-spacing:-.01em;
   }
+  .sheet-inner{transform-origin:top left;}
   .sheet + .sheet{margin-top:8mm;}
 
   .rp-top{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5mm;}
   .rp-brand{margin:0; font-size:10.5pt; font-weight:900; color:var(--navy); letter-spacing:.02em;}
   .rp-brand span{font-weight:500; color:#6B6560; font-size:9pt;}
   .rp-date{margin:0; font-size:8.6pt; color:#6B6560;}
-  .rp-title{margin:0; font-size:19pt; font-weight:900; letter-spacing:-.03em; color:#111;}
+  .rp-title{margin:0; font-size:18pt; font-weight:900; letter-spacing:-.03em; color:#111;}
   .rp-sub{margin:1.5mm 0 0; font-size:9.4pt; color:#6B6560;}
-  .rp-rule{height:2.2px; background:var(--navy); margin:3.5mm 0 5mm;}
+  .rp-rule{height:2.2px; background:var(--navy); margin:3mm 0 4.5mm;}
 
-  .rp-meta{display:grid; grid-template-columns:repeat(4,1fr); gap:0; border:1px solid #D9D5CF; margin-bottom:6mm;}
+  .rp-meta{display:grid; grid-template-columns:repeat(4,1fr); gap:0; border:1px solid #D9D5CF; margin-bottom:5mm;}
   .rp-meta div{padding:2.6mm 3mm; border-right:1px solid #E7E3DD;}
   .rp-meta div:last-child{border-right:0;}
   .rp-meta span{display:block; font-size:8pt; color:#8A837C; margin-bottom:.8mm;}
@@ -252,7 +255,7 @@
     color:#fff; font-style:normal; font-size:8.6pt; font-weight:700;
     display:flex; align-items:center; justify-content:center;
   }
-  .rp-sec{margin-bottom:6mm;}
+  .rp-sec{margin-bottom:5mm;}
 
   .rp-grid2{display:grid; grid-template-columns:1fr 1fr; gap:5mm; align-items:stretch;}
   .rp-grid2.wide-left{grid-template-columns:1.2fr 1fr;}
@@ -1209,10 +1212,13 @@
     ]).then(function(){ fn(); }, function(){ fn(); });
   }
 
-  function chartCanvas(w, h, draw){
-    var c = document.createElement('canvas'), dpr = 2;
+  /* 그리는 좌표는 그대로 두고 화면에 보이는 크기만 disp 배로 줄인다.
+     그래야 그림이 어긋나지 않으면서 A4 한 장에 들어간다. */
+  function chartCanvas(w, h, draw, disp){
+    var c = document.createElement('canvas'), dpr = 2, k = disp || 1;
     c.width = w * dpr; c.height = h * dpr;
-    c.style.width = w + 'px'; c.style.height = h + 'px';
+    c.style.width = Math.round(w * k) + 'px';
+    c.style.height = Math.round(h * k) + 'px';
     c.style.display = 'block';
     c.style.flex = '0 0 auto';
     var x = c.getContext('2d');
@@ -1297,14 +1303,35 @@
     x.fillText('수시 지원', c, c + 20);
   }
 
+  /* 한 장의 내용이 A4 높이를 넘으면 그만큼만 줄여서 정확히 한 장에 담는다.
+     인쇄할 때 페이지가 중간에 끊기는 것을 막는 안전장치다. */
+  function fitSheets(){
+    var sheets = document.querySelectorAll('#report .sheet');
+    for (var i = 0; i < sheets.length; i++) {
+      var s = sheets[i], inner = s.querySelector('.sheet-inner');
+      if (!inner) continue;
+      inner.style.transform = '';
+      inner.style.width = '';
+      var cs = window.getComputedStyle(s);
+      var avail = s.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+      var need = inner.scrollHeight;
+      if (need > avail && need > 0) {
+        var k = Math.max(avail / need, 0.55);
+        inner.style.transform = 'scale(' + k.toFixed(4) + ')';
+        inner.style.width = (100 / k).toFixed(2) + '%';
+      }
+    }
+  }
+
   function paintReportCharts(R, parts){
     withFonts(function(){
       var slot = function(name){ return document.querySelector('#report [data-chart="' + name + '"]'); };
       var g = slot('gauge'), rd = slot('radar'), dn = slot('donut');
       var t0 = R.typeScores[0];
-      if (g)  { g.innerHTML = '';  g.appendChild(chartCanvas(132, 132, function(x){ drawGaugeC(x, t0.score, t0.max); })); }
-      if (rd) { rd.innerHTML = ''; rd.appendChild(chartCanvas(300, 296, function(x){ drawRadarC(x, R.typeFixed); })); }
-      if (dn) { dn.innerHTML = ''; dn.appendChild(chartCanvas(148, 148, function(x){ drawDonutC(x, parts); })); }
+      if (g)  { g.innerHTML = '';  g.appendChild(chartCanvas(132, 132, function(x){ drawGaugeC(x, t0.score, t0.max); }, 0.90)); }
+      if (rd) { rd.innerHTML = ''; rd.appendChild(chartCanvas(300, 296, function(x){ drawRadarC(x, R.typeFixed); }, 0.88)); }
+      if (dn) { dn.innerHTML = ''; dn.appendChild(chartCanvas(148, 148, function(x){ drawDonutC(x, parts); }, 0.92)); }
+      fitSheets();
       markCharts();
     });
   }
@@ -1339,7 +1366,7 @@
     var h = '';
 
     /* ── 1장 ── */
-    h += '<section class="sheet">' +
+    h += '<section class="sheet"><div class="sheet-inner">' +
       rpHead() +
       '<h1 class="rp-title">수시 지원 전략 진단 리포트</h1>' +
       '<p class="rp-sub">내신과 모의고사, 61문항으로 본 전형 적합도와 지원 전략</p>' +
@@ -1394,11 +1421,11 @@
         '</div>' +
       '</div>' +
 
-      rpFoot(1) +
+      '</div>' + rpFoot(1) +
     '</section>';
 
     /* ── 2장 ── */
-    h += '<section class="sheet">' +
+    h += '<section class="sheet"><div class="sheet-inner">' +
       rpHead() +
       '<p class="rp-sub" style="margin:0"><b style="color:#111;font-size:11pt">수시 지원 전략 진단 리포트</b>' +
         (info.name ? ' · ' + esc(info.name) : '') + '</p>' +
@@ -1456,7 +1483,7 @@
 
       '<div class="rp-guide">' + esc(guide) + '</div>' +
 
-      rpFoot(2) +
+      '</div>' + rpFoot(2) +
     '</section>';
 
     document.getElementById('report').innerHTML = h;
