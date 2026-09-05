@@ -1,0 +1,1905 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>수시 지원 전략 자가진단 | CLS에듀케이션</title>
+<meta name="description" content="내신과 모의고사, 고교학점제 이수 현황으로 나에게 맞는 수시 전형과 계열을 찾는 진단입니다. 신내동 CLS에듀케이션.">
+<meta name="author" content="CLS에듀케이션">
+<link rel="canonical" href="https://survey.clsedu.co.kr/susi">
+
+<meta property="og:site_name" content="CLS에듀케이션">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://survey.clsedu.co.kr/susi">
+<meta property="og:title" content="수시 지원 전략 자가진단, 고2와 고3">
+<meta property="og:description" content="나에게 맞는 전형은 교과일까 학종일까 논술일까. 성적과 61문항으로 방향을 잡습니다.">
+<meta property="og:image" content="https://survey.clsedu.co.kr/logo-clsedu-landscape.webp">
+<meta property="og:locale" content="ko_KR">
+
+<link rel="icon" href="/logo.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+  :root{
+    --bg:#FAF8F6; --card:#FFFFFF; --line:#EBE5DF; --ink:#1A1A1A; --dim:#6B6560;
+    --brand:#F07020; --brand-dark:#D25A10; --soft:#FDF1E8; --softline:#F6DCC6;
+    --navy:#1E3A5F;
+    --shadow:0 1px 3px rgba(26,26,26,.05),0 8px 24px rgba(240,112,32,.10);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:'Noto Sans KR',-apple-system,BlinkMacSystemFont,'Malgun Gothic',sans-serif;
+    line-height:1.7; -webkit-text-size-adjust:100%;
+  }
+  .wrap{max-width:680px; margin:0 auto; padding:26px 18px 70px;}
+
+  header.top{text-align:center; margin-bottom:20px;}
+  .brandline{font-size:11.5px; letter-spacing:.16em; color:var(--brand); font-weight:700; margin:0 0 11px;}
+  h1{font-size:clamp(22px,5.6vw,30px); font-weight:900; line-height:1.34; margin:0 0 9px; letter-spacing:-.02em; word-break:keep-all;}
+  h1 em{font-style:normal; color:var(--brand);}
+  .sub{font-size:14.5px; color:var(--dim); margin:0; word-break:keep-all;}
+
+  .bar-wrap{position:sticky; top:0; z-index:10; background:var(--bg); padding:10px 0 12px; margin-bottom:8px;}
+  .bar{height:6px; background:#EDE8E2; border-radius:99px; overflow:hidden;}
+  .bar span{display:block; height:100%; width:0; background:var(--brand); border-radius:99px; transition:width .3s ease;}
+  .bar-txt{display:flex; justify-content:space-between; font-size:12.5px; color:var(--dim); margin:7px 0 0;}
+  .bar-txt b{color:var(--brand-dark); font-variant-numeric:tabular-nums;}
+
+  .card{background:var(--card); border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow); padding:20px 18px; margin-bottom:14px;}
+  .step-t{font-size:12px; letter-spacing:.14em; color:var(--brand); font-weight:700; margin:0 0 6px;}
+  .step-h{font-size:19px; font-weight:900; margin:0 0 8px; letter-spacing:-.01em; word-break:keep-all;}
+  .step-d{font-size:14px; color:var(--dim); margin:0 0 4px; word-break:keep-all;}
+
+  .howto{background:var(--soft); border:1px solid var(--softline); border-radius:12px; padding:13px 15px; font-size:13.5px; color:var(--brand-dark); margin-bottom:12px; word-break:keep-all;}
+  .howto b{color:var(--brand-dark); font-weight:700;}
+  .safe{display:flex; gap:10px; align-items:flex-start; background:#F8F6F3; border:1px solid #E7E0D8; border-radius:12px; padding:13px 15px; font-size:13px; color:#5A544E; line-height:1.65; word-break:keep-all; margin-bottom:14px;}
+  .safe svg{flex:0 0 auto; margin-top:2px;}
+  .safe b{color:var(--ink);}
+
+  label.f{display:block; font-size:13.5px; font-weight:700; margin:0 0 6px;}
+  .hint{font-size:12.5px; color:var(--dim); font-weight:400;}
+  input[type=text],input[type=tel],select{
+    width:100%; border:1.5px solid var(--line); border-radius:10px; padding:11px 12px;
+    font-family:inherit; font-size:15px; color:var(--ink); background:var(--card);
+  }
+  input:focus,select:focus{outline:2px solid var(--brand); outline-offset:1px; border-color:var(--brand);}
+  .row{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; margin-bottom:14px;}
+  .row.g5{grid-template-columns:repeat(auto-fit,minmax(104px,1fr));}
+  .field{min-width:0;}
+
+  .q{border-top:1px solid var(--line); padding-top:16px; margin-top:16px;}
+  .q:first-of-type{border-top:0; padding-top:0; margin-top:0;}
+  .qt{font-size:14.8px; font-weight:500; line-height:1.6; margin:0 0 11px; word-break:keep-all;}
+  .qt b{color:var(--brand-dark); font-weight:700;}
+  .choices{display:grid; grid-template-columns:repeat(3,1fr); gap:7px;}
+  .choices label{
+    display:block; text-align:center; border:1.5px solid var(--line); border-radius:9px;
+    padding:9px 4px; font-size:13.5px; cursor:pointer; transition:border-color .12s,background .12s,color .12s;
+  }
+  .choices label:hover{border-color:var(--brand); background:#FFF9F4;}
+  .choices input{position:absolute; opacity:0; width:0; height:0;}
+  .choices input:focus-visible + span{outline:2px solid var(--brand); outline-offset:3px; border-radius:4px;}
+  .choices label.on{border-color:var(--brand); background:var(--brand); color:#fff; font-weight:700;}
+
+  .nav{display:flex; gap:9px; margin-top:16px;}
+  .btn{
+    flex:1; border:0; border-radius:12px; padding:15px; font-family:inherit;
+    font-size:16px; font-weight:700; cursor:pointer; transition:background .15s,border-color .15s,color .15s;
+  }
+  .btn.main{background:var(--brand); color:#fff;}
+  .btn.main:hover{background:var(--brand-dark);}
+  .btn.ghost{flex:0 0 auto; padding:15px 20px; background:transparent; border:1.5px solid var(--line); color:var(--dim); font-weight:500;}
+  .btn.ghost:hover{border-color:var(--brand); color:var(--brand-dark);}
+  .btn:focus-visible{outline:3px solid var(--brand-dark); outline-offset:2px;}
+
+  .flash{display:none; background:#FBEEEC; border:1px solid #E8CFC9; color:#8C3B2E; border-radius:10px; padding:12px 14px; font-size:13.5px; margin-top:12px; word-break:keep-all;}
+  .flash.on{display:block;}
+
+  /* 결과 */
+  .res-head{background:var(--card); border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow); padding:28px 20px 24px; text-align:center; margin-bottom:14px;}
+  .res-lab{font-size:12px; letter-spacing:.14em; color:var(--dim); font-weight:700; margin:0 0 12px;}
+  .res-name{display:inline-block; background:var(--brand); color:#fff; padding:11px 26px; border-radius:99px; font-size:21px; font-weight:900; letter-spacing:-.01em;}
+  .res-desc{font-size:14.5px; color:var(--dim); margin:14px 0 0; word-break:keep-all;}
+  .sec-t{font-size:12px; letter-spacing:.14em; color:var(--brand); font-weight:700; margin:0 0 14px; padding-bottom:9px; border-bottom:1px solid var(--line);}
+
+  .rank{display:flex; flex-direction:column; gap:11px;}
+  .rank-row{display:grid; grid-template-columns:112px 1fr 42px; gap:10px; align-items:center; font-size:13.5px;}
+  .rank-row .nm{font-weight:700; word-break:keep-all;}
+  .rank-row .tr{background:#EDE8E2; border-radius:99px; height:9px; overflow:hidden;}
+  .rank-row .tr i{display:block; height:100%; background:var(--brand); border-radius:99px;}
+  .rank-row .vl{text-align:right; font-variant-numeric:tabular-nums; color:var(--dim); font-size:12.5px;}
+  .rank-row.top .nm{color:var(--brand-dark);}
+  .rank-row.dim .tr i{background:#D9D2CA;}
+
+  .line-box{background:var(--soft); border:1px solid var(--softline); border-radius:12px; padding:16px; margin-top:14px;}
+  .line-box .k{font-size:12px; letter-spacing:.1em; color:var(--brand-dark); font-weight:700; margin:0 0 7px;}
+  .line-box .v{font-size:16px; font-weight:900; margin:0 0 8px; word-break:keep-all;}
+  .line-box .d{font-size:13.5px; color:#7A5B3A; margin:0; word-break:keep-all; line-height:1.7;}
+
+  ul.plain{margin:0; padding-left:17px; display:flex; flex-direction:column; gap:8px; font-size:14px;}
+  ul.plain li::marker{color:var(--brand);}
+  .note{font-size:12.5px; color:var(--dim); margin:16px 0 0; line-height:1.7; text-align:center; word-break:keep-all;}
+
+  .cta{background:var(--brand); border-radius:14px; padding:24px 20px; text-align:center; margin-top:14px;}
+  .cta h2{font-size:19px; font-weight:900; color:#fff; margin:0 0 9px; line-height:1.45; word-break:keep-all;}
+  .cta p{font-size:14px; color:#FFE6D5; margin:0 0 17px; line-height:1.7; word-break:keep-all;}
+  .cta a{display:block; border-radius:10px; padding:14px; text-decoration:none; font-size:15.5px; font-weight:700; margin-bottom:9px;}
+  .cta a.primary{background:#fff; color:var(--brand-dark);}
+  .cta a.ghost2{background:transparent; color:#fff; border:1.5px solid rgba(255,255,255,.45);}
+  .cta a:last-child{margin-bottom:0;}
+
+  footer{text-align:center; font-size:12.5px; color:var(--dim); margin-top:26px; line-height:1.8;}
+  footer b{color:var(--ink); font-weight:700;}
+  .hidden{display:none;}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+
+  /* ── 결과 화면 ─────────────────────────────────────────────── */
+  .hero{background:var(--card); border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow); padding:26px 20px 24px; text-align:center; margin-bottom:14px;}
+  .hero .lab{font-size:11.5px; letter-spacing:.16em; color:var(--dim); font-weight:700; margin:0 0 16px;}
+  .hero .tag{display:inline-block; background:var(--soft); border:1px solid var(--softline); color:var(--brand-dark); border-radius:99px; padding:5px 13px; font-size:12.5px; font-weight:700; margin:0 0 10px;}
+  .hero h2{font-size:25px; font-weight:900; letter-spacing:-.02em; margin:0 0 9px; word-break:keep-all;}
+  .hero .desc{font-size:14px; color:var(--dim); margin:0; word-break:keep-all;}
+  .gauge{display:block; margin:0 auto 14px;}
+
+  .pair{display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-top:16px;}
+  .pair .box{background:var(--soft); border:1px solid var(--softline); border-radius:12px; padding:12px 13px; text-align:left;}
+  .pair .box p{margin:0;}
+  .pair .box .k{font-size:11px; letter-spacing:.1em; color:var(--brand-dark); font-weight:700; margin-bottom:5px;}
+  .pair .box .v{font-size:14.5px; font-weight:700; word-break:keep-all; line-height:1.45;}
+
+  .chart{display:block; margin:0 auto; max-width:100%; height:auto;}
+  .legend{display:flex; flex-direction:column; gap:9px; margin-top:14px;}
+  .legend .row{display:grid; grid-template-columns:11px 1fr auto; gap:10px; align-items:center; font-size:13.5px;}
+  .legend .dot{width:11px; height:11px; border-radius:3px;}
+  .legend .nm{color:var(--ink); word-break:keep-all;}
+  .legend .vl{color:var(--dim); font-variant-numeric:tabular-nums; font-size:12.5px;}
+
+  .detail{margin-top:2px;}
+  .detail .blk{border-top:1px solid var(--line); padding-top:13px; margin-top:13px;}
+  .detail .blk:first-child{border-top:0; padding-top:0; margin-top:0;}
+  .detail .k{font-size:11.5px; letter-spacing:.1em; color:var(--brand); font-weight:700; margin:0 0 6px;}
+  .detail p{margin:0; font-size:14px; word-break:keep-all; line-height:1.75;}
+  .detail ol{margin:0; padding-left:19px; display:flex; flex-direction:column; gap:7px; font-size:14px;}
+  .detail ol li{word-break:keep-all; line-height:1.7;}
+  .detail ol li::marker{color:var(--brand); font-weight:700;}
+  .detail .warn{background:#FBF6F2; border:1px solid #EFE0D2; border-radius:10px; padding:11px 13px; font-size:13.5px; color:#7A5B3A; word-break:keep-all;}
+
+  .seg{display:flex; gap:3px; margin:2px 0 12px;}
+  .seg i{flex:1; height:15px; border-radius:3px; background:#EDE8E2;}
+  .seg i.on{background:var(--brand);}
+
+  .scale{display:flex; gap:3px; margin-bottom:13px;}
+  .scale .st{flex:1; text-align:center;}
+  .scale .st .bx{height:7px; border-radius:99px; background:#EDE8E2;}
+  .scale .st.on .bx{background:var(--brand);}
+  .scale .st .tx{display:block; font-size:10.5px; color:var(--dim); margin-top:6px; word-break:keep-all; line-height:1.3;}
+  .scale .st.on .tx{color:var(--brand-dark); font-weight:700;}
+
+  .share-btns{display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-top:14px;}
+  .share-btns button{
+    border:0; border-radius:11px; padding:14px 10px; font-family:inherit; font-size:14.5px;
+    font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:7px;
+  }
+  .share-btns .save{background:var(--brand); color:#fff;}
+  .share-btns .save:hover{background:var(--brand-dark);}
+  .share-btns .copy{background:var(--card); color:var(--brand-dark); border:1.5px solid var(--softline);}
+  .share-btns .copy:hover{border-color:var(--brand);}
+  .share-btns button:disabled{opacity:.55; cursor:default;}
+  .share-note{font-size:12.5px; color:var(--dim); margin:11px 0 0; text-align:center; word-break:keep-all; line-height:1.6;}
+  /* 결과지 보기 화면 (이미지로 변환된 A4 두 장) */
+  .rp-view{position:fixed; inset:0; z-index:60; background:#2A2724; display:flex; flex-direction:column;}
+  .rp-view.hidden{display:none;}
+  .rp-view-bar{
+    display:flex; justify-content:space-between; align-items:center; gap:10px;
+    padding:13px 15px; background:#1F1D1B; color:#fff; font-size:14.5px; font-weight:700;
+  }
+  .rp-view-bar button{
+    background:transparent; border:1.5px solid rgba(255,255,255,.35); color:#fff;
+    border-radius:9px; padding:7px 15px; font-family:inherit; font-size:13.5px; font-weight:700; cursor:pointer;
+  }
+  .rp-view-bar button:hover{border-color:#fff;}
+  #rpPreview{flex:1; overflow:auto; padding:14px; display:flex; flex-direction:column; gap:12px; align-items:center;}
+  #rpPreview img{width:100%; max-width:620px; display:block; border-radius:5px; box-shadow:0 8px 28px rgba(0,0,0,.4);}
+  #rpPreview p{color:#BDB6AF; font-size:13.5px; text-align:center; margin:24px 0 0; line-height:1.7;}
+  .rp-view-actions{
+    display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px;
+    padding:12px 15px calc(12px + env(safe-area-inset-bottom)); background:#1F1D1B;
+  }
+  .rp-view-actions button{
+    border:0; border-radius:10px; padding:14px 6px; font-family:inherit;
+    font-size:14px; font-weight:700; cursor:pointer; color:#fff;
+  }
+  .rp-view-actions .save{background:var(--brand);}
+  .rp-view-actions .save:hover{background:var(--brand-dark);}
+  .rp-view-actions .copy{background:#3B3733;}
+  .rp-view-actions .copy:hover{background:#4A453F;}
+  .rp-view-actions button:disabled{opacity:.5; cursor:default;}
+  .rp-view-note{
+    grid-column:1/-1; margin:2px 0 0; text-align:center;
+    font-size:12.5px; color:#BDB6AF; line-height:1.6; word-break:keep-all;
+  }
+  /* ── A4 결과지 ─────────────────────────────────────────────
+     화면에서는 화면 밖에 두고, 인쇄할 때만 나타난다.
+     이미지 저장은 이 영역을 그대로 캡처한다. */
+  #report{position:absolute; left:-10000px; top:0; width:210mm; background:#fff;}
+  .sheet{
+    width:210mm; min-height:297mm; box-sizing:border-box; padding:13mm 14mm 16mm;
+    background:#fff; color:#1A1A1A; position:relative;
+    font-size:9.6pt; line-height:1.55; letter-spacing:-.01em;
+  }
+  .sheet + .sheet{margin-top:8mm;}
+
+  .rp-top{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5mm;}
+  .rp-brand{margin:0; font-size:10.5pt; font-weight:900; color:var(--navy); letter-spacing:.02em;}
+  .rp-brand span{font-weight:500; color:#6B6560; font-size:9pt;}
+  .rp-date{margin:0; font-size:8.6pt; color:#6B6560;}
+  .rp-title{margin:0; font-size:19pt; font-weight:900; letter-spacing:-.03em; color:#111;}
+  .rp-sub{margin:1.5mm 0 0; font-size:9.4pt; color:#6B6560;}
+  .rp-rule{height:2.2px; background:var(--navy); margin:3.5mm 0 5mm;}
+
+  .rp-meta{display:grid; grid-template-columns:repeat(4,1fr); gap:0; border:1px solid #D9D5CF; margin-bottom:6mm;}
+  .rp-meta div{padding:2.6mm 3mm; border-right:1px solid #E7E3DD;}
+  .rp-meta div:last-child{border-right:0;}
+  .rp-meta span{display:block; font-size:8pt; color:#8A837C; margin-bottom:.8mm;}
+  .rp-meta b{font-size:10pt; font-weight:700; word-break:keep-all;}
+
+  .rp-h{display:flex; align-items:center; gap:2.2mm; margin:0 0 3.2mm; font-size:11.4pt; font-weight:900; letter-spacing:-.02em;}
+  .rp-h i{
+    flex:0 0 auto; width:5.4mm; height:5.4mm; border-radius:1.2mm; background:var(--navy);
+    color:#fff; font-style:normal; font-size:8.6pt; font-weight:700;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .rp-sec{margin-bottom:6mm;}
+
+  .rp-grid2{display:grid; grid-template-columns:1fr 1fr; gap:5mm; align-items:stretch;}
+  .rp-grid2.wide-left{grid-template-columns:1.2fr 1fr;}
+  .rp-grid2 > *{min-width:0;}
+  .rp-col{display:flex; flex-direction:column; justify-content:center;}
+  .rp-chart{display:flex; align-items:center; justify-content:center; height:100%;}
+  .rp-box{border:1px solid #E2DED8; border-radius:2mm; padding:4mm; background:#FCFBFA; height:100%;}
+  .rp-box.plain{background:#fff;}
+  .rp-box.center{text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center;}
+  .rp-k{margin:0 0 1.8mm; font-size:8.2pt; font-weight:700; letter-spacing:.08em; color:var(--brand-dark);}
+  .rp-box p{margin:0 0 2mm; word-break:keep-all;}
+  .rp-box p:last-child{margin-bottom:0;}
+  .rp-badge{display:inline-block; background:var(--brand); color:#fff; border-radius:99px; padding:1.6mm 5mm; font-size:12pt; font-weight:900;}
+  .rp-cap{font-size:8.8pt; color:#6B6560;}
+  .rp-note-sm{margin:2.5mm 0 0; font-size:8.4pt; color:#8A837C; word-break:keep-all;}
+
+  .rp-bars{display:flex; flex-direction:column; gap:2.2mm;}
+  .rp-bar{display:grid; grid-template-columns:26mm 1fr 11mm; gap:2.5mm; align-items:center; font-size:9pt;}
+  .rp-bar .nm{word-break:keep-all;}
+  .rp-bar.top .nm{font-weight:700; color:var(--brand-dark);}
+  .rp-bar .tr{height:2.4mm; background:#EDE8E2; border-radius:99px;}
+  .rp-bar .tr i{display:block; height:100%; background:var(--brand); border-radius:99px;}
+  .rp-bar.dim .tr i{background:#D9D2CA;}
+  .rp-bar .vl{text-align:right; font-variant-numeric:tabular-nums; color:#6B6560; font-size:8.6pt;}
+
+  .rp-table{width:100%; border-collapse:collapse; font-size:9pt;}
+  .rp-table th,.rp-table td{border:1px solid #DDD8D2; padding:2.4mm 3mm; vertical-align:top; word-break:keep-all;}
+  .rp-table thead th{background:var(--navy); color:#fff; font-weight:700; font-size:8.8pt; text-align:left;}
+  .rp-table tbody th{background:#F4F2EF; font-weight:700; width:26mm;}
+
+  .rp-seg{display:flex; gap:1mm; margin:0 0 2.5mm;}
+  .rp-seg i{flex:1; height:4mm; border-radius:.8mm; background:#EDE8E2;}
+  .rp-seg i.on{background:var(--brand);}
+
+  .rp-guide{border:1px solid #D9D5CF; background:#F7F6F4; border-radius:2mm; padding:3.5mm 4mm; font-size:8.6pt; color:#5A544E; word-break:keep-all;}
+  .rp-msg{border-left:3px solid var(--brand); background:var(--soft); border-radius:0 2mm 2mm 0; padding:4mm 4.5mm; word-break:keep-all;}
+  .rp-msg .rp-k{color:var(--brand-dark);}
+
+  .rp-foot{
+    position:absolute; left:14mm; right:14mm; bottom:7mm;
+    display:flex; justify-content:space-between; align-items:center;
+    border-top:1px solid #E7E3DD; padding-top:2mm; font-size:8pt; color:#8A837C;
+  }
+  #report svg{display:block;}
+
+  @media print{
+    .wrap{display:none !important;}
+    #report{position:static !important; left:auto !important; width:auto !important;}
+    .sheet{margin:0 !important; page-break-after:always; break-after:page;}
+    .sheet:last-child{page-break-after:auto; break-after:auto;}
+    .rp-view{display:none !important;}
+    body{background:#fff !important;}
+    @page{size:A4; margin:0;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <p class="brandline">신내동 CLS에듀케이션</p>
+    <h1>수시 지원 전략 <em>자가진단</em></h1>
+    <p class="sub">나에게 맞는 전형은 교과일까, 학종일까, 논술일까.<br>성적과 61문항으로 방향을 잡습니다.</p>
+  </header>
+
+  <div class="bar-wrap" id="barWrap">
+    <div class="bar"><span id="prog"></span></div>
+    <p class="bar-txt"><span id="stepName">시작</span><b><span id="stepNo">0</span> / 5</b></p>
+  </div>
+
+  <div id="steps"></div>
+
+  <div class="flash" id="flash"></div>
+
+  <div class="nav" id="nav">
+    <button class="btn ghost hidden" id="prev" type="button">이전</button>
+    <button class="btn main" id="next" type="button">시작하기</button>
+  </div>
+
+  <div id="result" class="hidden"></div>
+
+  <footer>
+    <b>CLS에듀케이션</b><br>
+    서울 중랑구 봉화산로 218 영창빌딩 7층
+  </footer>
+</div>
+
+<!-- A4 결과지. 화면 밖에 그려 두고 인쇄와 이미지 저장에 쓴다. -->
+<div id="report" aria-hidden="true"></div>
+
+<!-- 결과지를 이미지로 보여 주는 화면 -->
+<div class="rp-view hidden" id="rpView" role="dialog" aria-label="수시 진단 결과지">
+  <div class="rp-view-bar">
+    <span>수시 진단 결과지 · A4 2장</span>
+    <button type="button" id="rpClose">닫기</button>
+  </div>
+  <div id="rpPreview"></div>
+  <div class="rp-view-actions">
+    <button type="button" class="save" id="btnPdf">PDF로 저장</button>
+    <button type="button" class="copy" id="btnSave">이미지 저장</button>
+    <button type="button" class="copy" id="btnShare">공유하기</button>
+    <p class="rp-view-note" id="shareNote"></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ─────────────────────────────────────────────
+     문항 데이터
+     ───────────────────────────────────────────── */
+
+  // PART 1-추가, 고교학점제 이수 진단 (6문항)
+  var CREDIT = [
+    '목표 학과에서 말하는 핵심 권장과목(공학이면 미적분과 기하, 물리학Ⅱ, 상경이면 미적분과 확통, 경제 같은 과목)을 기초부터 심화까지 빠짐없이 들었다.',
+    '점수 받기 쉬운 과목으로 시간표를 짜기보다, 등급이 불리해도 전공과 이어지는 과목을 골랐다.',
+    '학교에 없는 과목은 공동교육과정이나 온라인 강좌, 소인수 과목을 찾아 들었다.',
+    '진로선택이나 융합선택 과목에서 전공 관련 과목의 성취도를 A로 받았다.',
+    '2학년에서 배운 내용이 3학년 심화 과목의 탐구 보고서로 이어졌다.',
+    '학교 교육과정에 한계가 있었더라도 동아리와 자율활동으로 전공 관련 탐구를 메워 두었다.'
+  ];
+
+  // PART 2, 6대 전형 적합도 (각 5문항)
+  var TYPES = [
+    { key:'gyogwa', name:'학생부교과', short:'교과',
+      desc:'내신 정량 점수로 승부하는 전형입니다. 예측이 정확한 대신 변수가 적습니다.',
+      qs:[
+        '목표 대학의 최근 교과 70퍼센트 컷에 내 내신이 안정권으로 들어온다.',
+        '수능 최저(2합 또는 3합)를 모의고사에서 여덟 번 중 여덟 번은 맞춰 왔다.',
+        '세특이나 비교과의 깊이는 평범한 편이라, 정성평가보다 점수가 유리하다.',
+        '면접이나 논술에 시간을 쓰기보다 수능 공부에 집중하고 싶다.',
+        '입결 데이터를 보고 당락을 또렷하게 예측하고 싶다.'
+      ] },
+    { key:'jonghap', name:'학생부종합 서류형', short:'학종 서류',
+      desc:'기록으로 평가받는 전형입니다. 세특과 과목 이수가 무기가 됩니다.',
+      qs:[
+        '전공과 이어지는 과목의 이수 이력과 성취도가 좋다.',
+        '세특에 요약이 아니라 호기심에서 탐구, 심화, 성장으로 이어진 흐름이 보인다.',
+        '내신 등급에 비해 활동 수준이 좋아서 정성평가로 도전해 볼 만하다.',
+        '말로 설명하기보다 잘 써 둔 기록으로 평가받는 쪽이 편하다.',
+        '1학년부터 3학년까지 진로 탐색의 결이 일관되게 이어진다.'
+      ] },
+    { key:'myeonjeop', name:'학생부종합 면접형', short:'학종 면접',
+      desc:'대면에서 뒤집는 전형입니다. 말로 설명하는 힘이 관건입니다.',
+      qs:[
+        '생기부에 적힌 활동의 배경과 과정, 전공 개념을 물으면 막힘없이 설명할 수 있다.',
+        '발표나 모의면접에서 긴장하지 않고 근거를 들어 말하는 편이다.',
+        '서류만으로는 조금 아쉬워서 대면 평가에서 뒤집어 보고 싶다.',
+        '지원 학과의 최신 쟁점에 대해 내 생각을 정리해 말할 수 있다.',
+        '남은 기간 구술 훈련에 시간을 낼 마음이 있다.'
+      ] },
+    { key:'nonsul', name:'일반논술', short:'일반논술',
+      desc:'내신을 수능 최저와 글로 뒤집는 전형입니다. 경쟁률이 높지만 문이 넓습니다.',
+      qs:[
+        '인문이면 긴 제시문을 비교하고 비판하는 글쓰기에, 자연이면 미적분과 기하의 서술형 증명에 자신 있다.',
+        '모의고사 성적이 좋아서 3합 6이나 4합 5 같은 높은 최저를 맞출 수 있다.',
+        '내신에 비해 사고력과 고난도 문제 해결력이 확실히 앞선다.',
+        '기출을 분석하며 답안 작성 훈련을 꾸준히 소화할 끈기가 있다.',
+        '수능 공부와 병행하며 주 1회에서 2회 논술 훈련을 버틸 수 있다.'
+      ] },
+    { key:'yaksul', name:'약술형 논술', short:'약술형',
+      desc:'EBS 연계 단답형으로 수도권을 노리는 전형입니다. 수능 공부가 그대로 대비가 됩니다.',
+      qs:[
+        '긴 서술형은 부담스럽지만 단답형이나 소문항 주관식은 풀 만하다.',
+        '수능특강과 수능완성의 기본에서 중간 수준 문항 풀이에 익숙하다.',
+        '내신이 3등급 중반에서 5등급 후반이라 교과나 학종으로는 수도권이 애매하다.',
+        '수능 최저가 없거나 1개 3등급처럼 가벼운 기준을 선호한다.',
+        '수능과 범위가 겹치니 부담 없이 카드를 하나 더 쥐고 싶다.'
+      ] },
+    { key:'seoryu', name:'특기자 서류', short:'특기자',
+      desc:'외부 실적과 포트폴리오로 가는 전형입니다. 해당되면 강력하고, 아니면 해당 없음입니다.',
+      qs:[
+        '공인어학성적이나 외부 대회 입상 같은 공인된 실적이 있다.',
+        '프로그래밍이나 외국어, 디자인처럼 뚜렷한 포트폴리오가 있다.',
+        '정규 교육과정 밖에서 쌓은 전공 특기 활동을 증빙할 수 있다.',
+        '학생부 말고 다른 서류를 낼 수 있는 전형을 찾고 있다.',
+        '학과와 관련해 직접 주도한 프로젝트 결과물이 있다.'
+      ] }
+  ];
+
+  // PART 3, 계열 적합도 (5영역 각 5문항)
+  var FIELDS = [
+    { key:'inmun', name:'인문, 어문, 예술',
+      majors:'국어국문, 영어영문, 사학, 철학, 미디어커뮤니케이션, 문화콘텐츠',
+      qs:[
+        '사람의 심리나 역사의 인과, 철학적 물음을 곱씹는 것이 즐겁다.',
+        '작품이나 영화, 콘텐츠에 숨은 상징과 메시지를 찾아내는 데 흥미가 있다.',
+        '낯선 언어의 문법 구조나 다른 문화권의 차이를 배울 때 몰입한다.',
+        '생각을 글로 풀어내거나 이야기를 기획하는 데 재능이 있다.',
+        '사회를 볼 때 숫자보다 사람과 맥락을 먼저 본다.'
+      ] },
+    { key:'sahoe', name:'사회, 경영, 경제',
+      majors:'경영, 경제, 행정, 정치외교, 사회학, 무역, 광고홍보',
+      qs:[
+        '경제 뉴스나 기업의 전략, 시장이 움직이는 원리에 관심이 많다.',
+        '불합리한 제도를 고치는 법률이나 정책 제안에 마음이 간다.',
+        '함께 일할 때 역할을 나누고 전체를 조율하는 쪽을 맡는다.',
+        '통계와 그래프로 사회 현상을 읽고 흐름을 짚는 일이 흥미롭다.',
+        '설득이나 협상으로 집단의 문제를 풀어 본 경험이 있다.'
+      ] },
+    { key:'jayeon', name:'자연과학, 의약학',
+      majors:'의예, 약학, 생명과학, 화학, 수학, 물리, 간호, 수의예',
+      qs:[
+        '자연 현상이나 생명체가 돌아가는 원리를 근본에서 밝히고 싶다.',
+        '실험할 때 변인을 통제하고 오차의 원인을 끝까지 쫓는 끈기가 있다.',
+        '질병 치료나 신약, 유전공학, 뇌과학 같은 분야에 끌린다.',
+        '생명을 다루는 일의 무게와 의료 윤리에 책임감을 느낀다.',
+        '수학과 과학 이론을 깊이 파는 것이 즐겁고 과학 저널을 찾아본 적이 있다.'
+      ] },
+    { key:'gonghak', name:'공학, IT, 신기술',
+      majors:'컴퓨터공학, 인공지능, 전자전기, 기계, 화학공학, 신소재, 산업공학',
+      qs:[
+        '불편한 것을 기술이나 앱, 장치로 직접 고쳐 보고 싶다.',
+        '코딩이나 알고리즘, 인공지능 모델, 회로 만들기에 호기심이 크다.',
+        '과학 원리를 실제 제품과 산업에 응용하는 것이 즐겁다.',
+        '시스템을 설계하고 구조를 다듬어 효율을 끌어올리는 일을 좋아한다.',
+        '반도체나 모빌리티, 이차전지, 로봇 같은 분야에 관심이 많다.'
+      ] },
+    { key:'gyoyuk', name:'교육, 복지, 상담',
+      majors:'교육학, 각 교과교육, 유아교육, 사회복지, 심리학, 상담학',
+      qs:[
+        '내가 아는 것을 상대 눈높이에 맞춰 설명해 줄 때 보람을 느낀다.',
+        '남의 고민을 듣고 공감하면서 현실적인 조언을 건네는 편이다.',
+        '교육 격차나 취약계층 복지, 청소년 문제에 문제의식이 있다.',
+        '성향이 다른 사람들과도 신뢰 관계를 잘 만든다.',
+        '모두가 존중받는 교육이나 복지 환경을 만드는 일을 직업으로 삼고 싶다.'
+      ] }
+  ];
+
+  // PART 4, 성적 구간별 대학 라인
+  /* 대학 라인은 수시 전형이므로 내신 하나로 잡는다.
+     예전에는 내신과 모의고사를 AND 로 묶어, 둘 중 나쁜 쪽이 라인을 끌어내렸다.
+     (내신 1.2에 모의 4.0인 학생이 약술형 라인으로 떨어지는 식)
+     모의고사는 아래 minCheck 에서 수능 최저 충족 판단으로만 쓴다. */
+  var LINES = [
+    { key:'A', name:'최상위 안정형', cond:function(n){ return n <= 1.5; },
+      unis:'서울대, 연세대, 고려대, 의약학 계열',
+      plan:'교과와 학종을 상향과 적정으로 배분합니다. 권장과목 이수에 구멍이 없어야 감점이 없습니다.' },
+    { key:'B', name:'상위권 균형형', cond:function(n){ return n <= 2.3; },
+      unis:'서강대, 성균관대, 한양대, 중앙대, 경희대',
+      plan:'최저 충족률이 높은 교과를 안정으로 2장 두고, 학종을 적정과 상향으로 4장 배분합니다.' },
+    { key:'C', name:'중상위 면접형', cond:function(n){ return n <= 3.3; },
+      unis:'건국대, 동국대, 홍익대, 국민대, 숭실대, 세종대, 단국대',
+      plan:'서류가 강한 학과를 골라 면접형 비중을 키웁니다. 약술형이나 일반논술을 한두 장 함께 겁니다.' },
+    { key:'D', name:'약술형 특화형', cond:function(n){ return n <= 4.6; },
+      unis:'가천대, 삼육대, 서경대, 수원대, 경기대, 상명대',
+      plan:'약술형 논술을 2장에서 3장 반드시 배치해 수도권을 돌파합니다. 나머지는 교과 면접형으로 채웁니다.' },
+    { key:'E', name:'최저 없는 전형 중심형', cond:function(){ return true; },
+      unis:'수능최저 없는 수도권 교과, 지방거점 교과와 면접',
+      plan:'수능최저가 없는 교과 전형과 면접 비중이 큰 전형을 노립니다. 약술형 논술을 집중 대비합니다.' }
+  ];
+
+  // 모의고사로 보는 수능 최저 충족 가능성
+  function minCheck(m){
+    if (m <= 2.5) return { k:'여유', d:'2합 4나 3합 6 같은 최저까지 노려볼 수 있습니다. 최저가 걸린 전형은 경쟁률이 내려가니 오히려 적극적으로 쓰세요.' };
+    if (m <= 3.5) return { k:'빠듯', d:'학과마다 기준이 다릅니다. 지원 전에 2합과 3합 조건을 하나씩 확인하고, 최저 없는 전형도 절반은 섞어 두세요.' };
+    return { k:'어려움', d:'최저 없는 전형 위주로 짭니다. 최저가 걸린 카드는 한 장을 넘기지 않는 편이 안전합니다.' };
+  }
+
+  // 내신보다 모의고사가 확실히 앞서면 논술로 뒤집는 카드를 따로 권한다.
+  function nonsulCard(m, n){
+    var gap = Math.round((n - m) * 10) / 10;
+    if (gap < 1.5 || m > 3.5) return null;
+    return {
+      gap: gap,
+      unis: m <= 2.5
+        ? '연세대, 고려대, 성균관대, 서강대, 한양대 논술'
+        : '중앙대, 경희대, 건국대, 동국대 일반논술과 약술형 논술',
+      desc: '모의고사가 내신보다 ' + gap + '등급 앞섭니다. 내신으로 잡은 라인 위쪽을 일반논술로 두세 장 겨냥해 볼 수 있습니다.'
+    };
+  }
+
+  // 전형별 성향 해설 (결과 화면에서만 쓴다)
+  var TYPE_DETAIL = {
+    gyogwa: {
+      tag:'숫자로 증명하는 유형',
+      who:'내신 등급이 또렷하게 앞서고, 예측이 되는 승부를 선호하는 학생입니다. 정성평가에 기대기보다 쌓아 온 점수로 밀고 가는 쪽이 유리합니다.',
+      strong:'입결 데이터로 당락을 계산할 수 있어 여섯 장의 밑그림이 가장 선명하게 그려집니다.',
+      todo:[
+        '목표 대학 3개년 70퍼센트 컷을 학과 단위로 정리합니다.',
+        '수능 최저 충족을 최우선에 둡니다. 교과는 최저에서 갈립니다.',
+        '정량이 비슷한 학과끼리 면접 유무로 갈라 안정과 소신을 나눕니다.'
+      ],
+      watch:'내신이 반 등급만 밀려도 결과가 바뀝니다. 최저 없는 전형은 경쟁률이 크게 오르니 안정 카드를 따로 쥐고 가야 합니다.'
+    },
+    jonghap: {
+      tag:'기록으로 말하는 유형',
+      who:'세특과 과목 이수에 이야기가 쌓여 있는 학생입니다. 등급 한 줄보다 3년간의 흐름으로 설명될 때 더 좋은 평가를 받습니다.',
+      strong:'내신 숫자보다 활동의 깊이가 앞설 때, 정성평가에서 순위를 뒤집을 수 있습니다.',
+      todo:[
+        '3년치 생기부를 전공 키워드로 다시 읽고 흐름을 한 장으로 정리합니다.',
+        '빠진 권장과목이 있다면 무엇으로 메웠는지 근거를 찾아 둡니다.',
+        '학과별 인재상에 맞춰 지원 순서를 정합니다.'
+      ],
+      watch:'기록이 요약에 그치면 평범해집니다. 호기심에서 탐구로, 탐구에서 성장으로 이어진 대목이 분명히 보여야 합니다.'
+    },
+    myeonjeop: {
+      tag:'말로 뒤집는 유형',
+      who:'자기가 한 활동을 스스로 설명할 수 있고, 사람 앞에서 오히려 힘이 나는 학생입니다.',
+      strong:'서류가 조금 아쉬워도 면접 배점이 큰 전형에서는 순위가 통째로 바뀝니다.',
+      todo:[
+        '생기부 문장마다 왜, 어떻게, 그래서를 붙여 답을 만들어 둡니다.',
+        '전공 기본 개념을 1분 안에 설명하는 연습을 반복합니다.',
+        '모의면접을 녹화해 시선과 말의 속도를 고칩니다.'
+      ],
+      watch:'준비 없이 들어가면 서류만 못한 결과가 납니다. 배점이 큰 만큼 실패도 크다는 뜻입니다.'
+    },
+    nonsul: {
+      tag:'한 판으로 역전하는 유형',
+      who:'내신보다 사고력과 모의고사가 앞서는 학생입니다. 정해진 시간에 답을 만들어 내는 힘이 있습니다.',
+      strong:'내신 열세를 글 한 편으로 뒤집을 수 있는, 사실상 유일한 통로입니다.',
+      todo:[
+        '목표 대학 기출 3개년을 풀고 채점 기준을 손으로 옮겨 적습니다.',
+        '주 1회에서 2회 첨삭을 정해진 요일에 고정합니다.',
+        '수능 최저 충족을 논술 준비와 같은 무게로 다룹니다.'
+      ],
+      watch:'경쟁률이 수십 대 일입니다. 최저를 못 맞추면 글과 상관없이 끝나니, 최저부터 계산하고 지원해야 합니다.'
+    },
+    yaksul: {
+      tag:'수능 공부가 그대로 무기가 되는 유형',
+      who:'내신으로는 수도권이 애매하지만 개념 문제는 풀어내는 학생입니다.',
+      strong:'수능특강 범위와 겹쳐서, 따로 떼어 쓰는 시간이 가장 적습니다.',
+      todo:[
+        '지원 가능 대학의 출제 유형과 배점표를 먼저 확인합니다.',
+        '수능특강 기본에서 중간 난이도를 손으로 푸는 연습을 합니다.',
+        '최저 유무로 지원 대학을 두 갈래로 나눠 둡니다.'
+      ],
+      watch:'쉬워 보여 사람이 몰리는 전형입니다. 시간 안에 정확히 쓰는 훈련이 승부를 가릅니다.'
+    },
+    seoryu: {
+      tag:'증빙으로 가는 유형',
+      who:'교과 밖에서 만든 실적과 결과물이 있는 학생입니다.',
+      strong:'해당 학과에서는 다른 어떤 전형보다 강한 카드가 됩니다.',
+      todo:[
+        '모집요강의 인정 실적 범위를 한 줄씩 대조합니다.',
+        '포트폴리오를 학과 인재상 순서로 다시 배열합니다.',
+        '실적을 설명하는 면접 답변을 함께 준비합니다.'
+      ],
+      watch:'모집 인원이 적고 대학마다 기준이 다릅니다. 해당하지 않으면 미련 없이 접는 편이 낫습니다.'
+    }
+  };
+
+  // 계열별 진로 예시
+  /* A4 결과지의 실천 플랜 표에서 '학생 실천'(TYPE_DETAIL.todo) 옆에 놓이는 'CLS 코칭 방향' */
+  var TYPE_COACH = {
+    gyogwa: [
+      '최근 3개년 입결을 학과 단위로 뽑아 지원 가능선을 함께 확정합니다.',
+      '모의고사마다 최저 충족률을 점검하고 모자란 과목을 집중 보강합니다.',
+      '안정과 적정, 소신 여섯 장의 조합을 면담에서 확정합니다.'
+    ],
+    jonghap: [
+      '생기부를 전공 키워드로 함께 읽고 3년 흐름을 한 장으로 정리해 드립니다.',
+      '덜 들은 과목은 대체 활동과 이어 붙여 설명 논리를 만듭니다.',
+      '학과 인재상에 맞춰 지원 순서를 함께 잡습니다.'
+    ],
+    myeonjeop: [
+      '생기부 문장마다 예상 질문을 뽑아 답변안을 만들어 드립니다.',
+      '전공 기본 개념을 1분 안에 설명하는 훈련을 반복합니다.',
+      '모의면접을 녹화해 시선과 속도, 군더더기를 교정합니다.'
+    ],
+    nonsul: [
+      '목표 대학 기출 3개년을 채점 기준과 함께 분석해 드립니다.',
+      '첨삭 요일을 고정하고 답안을 누적해 변화를 추적합니다.',
+      '최저 충족 로드맵을 수능 대비 일정과 함께 짭니다.'
+    ],
+    yaksul: [
+      '지원 가능 대학의 출제 유형과 배점표를 정리해 드립니다.',
+      '수능특강 기본과 중간 난이도를 손으로 푸는 훈련을 관리합니다.',
+      '최저 유무로 지원 대학을 두 갈래로 나눠 배치합니다.'
+    ],
+    seoryu: [
+      '모집요강의 인정 실적 범위를 한 줄씩 함께 대조합니다.',
+      '포트폴리오를 학과 인재상 순서로 다시 구성합니다.',
+      '실적을 설명하는 면접 답변을 함께 준비합니다.'
+    ]
+  };
+
+  var FIELD_JOBS = {
+    inmun:'기자, 작가, 콘텐츠 기획자, 교사, 번역가, 큐레이터',
+    sahoe:'경영·마케팅, 회계사, 공무원, 애널리스트, 컨설턴트',
+    jayeon:'의사, 약사, 연구원, 임상병리사, 데이터 분석가',
+    gonghak:'개발자, 인공지능 엔지니어, 반도체·이차전지 연구원, 설계 엔지니어',
+    gyoyuk:'교사, 상담사, 사회복지사, 임상심리사, 교육 기획자'
+  };
+
+  var SCALE = [ {v:2,t:'그렇다'}, {v:1,t:'보통'}, {v:0,t:'아니다'} ];
+
+  /* ─────────────────────────────────────────────
+     상태
+     ───────────────────────────────────────────── */
+  var state = { step:0, info:{}, grades:{}, credit:[], types:{}, fields:{} };
+  TYPES.forEach(function(t){ state.types[t.key] = []; });
+  FIELDS.forEach(function(f){ state.fields[f.key] = []; });
+
+  var STEPS = [
+    { name:'기본 정보', build:buildInfo,   validate:vInfo },
+    { name:'성적 입력', build:buildGrades, validate:vGrades },
+    { name:'과목 이수', build:buildCredit, validate:vCredit },
+    { name:'전형 적합도', build:buildTypes,  validate:vTypes },
+    { name:'계열 적합도', build:buildFields, validate:vFields }
+  ];
+
+  var stepsEl = document.getElementById('steps');
+  var flashEl = document.getElementById('flash');
+  var nextBtn = document.getElementById('next');
+  var prevBtn = document.getElementById('prev');
+  var progEl  = document.getElementById('prog');
+  var stepNoEl = document.getElementById('stepNo');
+  var stepNameEl = document.getElementById('stepName');
+
+  /* ─────────────────────────────────────────────
+     화면 만들기
+     ───────────────────────────────────────────── */
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  function gradeSelect(id, label, hint){
+    var o = '<option value="">선택</option>';
+    for (var i = 1; i <= 9; i++) o += '<option value="' + i + '">' + i + '등급</option>';
+    return '<div class="field"><label class="f" for="' + id + '">' + label +
+           (hint ? ' <span class="hint">' + hint + '</span>' : '') +
+           '</label><select id="' + id + '">' + o + '</select></div>';
+  }
+
+  /* 내신 평균은 2.43 처럼 소수로 나온다.
+     정수만 고르게 하면 대학 라인 판정(2.5, 2.3, 3.3 같은 소수 경계)이 뭉개지므로 직접 적게 한다.
+     모의고사는 등급 자체가 정수라 선택으로 둔다. */
+  function buildInfo(){
+    return '<div class="card">' +
+      '<p class="step-t">STEP 1</p>' +
+      '<h2 class="step-h">먼저 누구인지 알려 주세요</h2>' +
+      '<p class="step-d">진단 결과를 원장이 미리 살펴본 뒤 면담을 준비합니다.</p>' +
+      '<div style="height:14px"></div>' +
+      '<div class="row">' +
+        '<div class="field"><label class="f" for="i-name">학생 이름</label><input type="text" id="i-name" autocomplete="name" placeholder="예: 홍길동"></div>' +
+        '<div class="field"><label class="f" for="i-phone">연락처</label><input type="tel" id="i-phone" autocomplete="tel" placeholder="010-0000-0000"></div>' +
+      '</div>' +
+      '<div class="row">' +
+        '<div class="field"><label class="f" for="i-school">학교 <span class="hint">선택</span></label><input type="text" id="i-school" placeholder="예: 신현고"></div>' +
+        '<div class="field"><label class="f" for="i-grade">학년</label><select id="i-grade">' +
+          '<option value="">선택</option><option>고2</option><option>고3</option><option>N수</option>' +
+        '</select></div>' +
+      '</div>' +
+      '<div class="safe" style="margin-bottom:0">' +
+        '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#F07020" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+        '<rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>' +
+        '<span><b>수집 항목</b> 이름, 연락처, 학교, 학년, 성적과 진단 답변. ' +
+        '<b>이용 목적</b> 수시 면담 자료 준비. <b>보유 기간</b> 면담 종료 후 6개월. ' +
+        '동의하지 않으셔도 되지만, 그 경우 결과를 보내 드릴 수 없습니다.<br>' +
+        '<label style="display:inline-flex;gap:7px;align-items:center;margin-top:9px;cursor:pointer;font-weight:700;color:#1A1A1A">' +
+        '<input type="checkbox" id="i-agree" style="width:17px;height:17px;accent-color:#F07020"> 위 내용에 동의합니다</label></span>' +
+      '</div>' +
+    '</div>';
+  }
+
+  function buildGrades(){
+    return '<div class="card">' +
+      '<p class="step-t">STEP 2</p>' +
+      '<h2 class="step-h">성적을 입력해 주세요</h2>' +
+      '<p class="step-d">기억나는 대로 적으셔도 됩니다. 대학 라인을 잡는 데 쓰입니다.</p>' +
+      '<div class="howto" style="margin-top:14px"><b>내신</b>은 지금까지 누적 평균 등급, <b>모의고사</b>는 6월이나 9월 가운데 가장 잘 나온 성적을 넣어 주세요.</div>' +
+      '<p class="step-t" style="margin:18px 0 10px">내신 평균 등급</p>' +
+      '<div class="row g5">' +
+        gradeSelect('n-kor','국어') + gradeSelect('n-math','수학') + gradeSelect('n-eng','영어') +
+        gradeSelect('n-inq','탐구','상위 2과목') + gradeSelect('n-all','전 교과','필수') +
+      '</div>' +
+      '<p class="step-t" style="margin:18px 0 10px">모의고사 등급</p>' +
+      '<div class="row g5">' +
+        gradeSelect('m-kor','국어') + gradeSelect('m-math','수학','필수') + gradeSelect('m-eng','영어') +
+        gradeSelect('m-inq1','탐구 1') + gradeSelect('m-inq2','탐구 2') +
+      '</div>' +
+      '<div class="field" style="max-width:220px">' +
+        '<label class="f" for="m-choice">수학 선택과목</label>' +
+        '<select id="m-choice"><option value="">선택</option><option>확률과통계</option><option>미적분</option><option>기하</option></select>' +
+      '</div>' +
+    '</div>';
+  }
+
+  function qBlock(groupId, idx, text){
+    var h = '<div class="q"><p class="qt">' + esc(text) + '</p><div class="choices">';
+    SCALE.forEach(function(s){
+      h += '<label data-g="' + groupId + '" data-i="' + idx + '" data-v="' + s.v + '">' +
+             '<input type="radio" name="' + groupId + '_' + idx + '" value="' + s.v + '">' +
+             '<span>' + s.t + '</span></label>';
+    });
+    return h + '</div></div>';
+  }
+
+  function buildCredit(){
+    var h = '<div class="card"><p class="step-t">STEP 3</p>' +
+      '<h2 class="step-h">고교학점제 과목 이수</h2>' +
+      '<p class="step-d">대학은 "개설돼 있는데 피했는가"와 "없는데도 찾아 들었는가"를 봅니다.</p>' +
+      '<div class="howto" style="margin:14px 0 4px">여섯 문항입니다. 학종 지원 가능성을 가르는 대목이라 솔직하게 골라 주세요.</div>';
+    CREDIT.forEach(function(t, i){ h += qBlock('credit', i, (i + 1) + '. ' + t); });
+    return h + '</div>';
+  }
+
+  function buildTypes(){
+    var h = '';
+    TYPES.forEach(function(t, ti){
+      h += '<div class="card">' +
+        (ti === 0 ? '<p class="step-t">STEP 4</p><h2 class="step-h">전형 적합도</h2><p class="step-d" style="margin-bottom:16px">여섯 전형 각 다섯 문항, 모두 서른 문항입니다.</p>' : '') +
+        '<p class="step-t" style="margin-bottom:6px">' + esc(t.name) + '</p>' +
+        '<p class="step-d" style="margin-bottom:16px">' + esc(t.desc) + '</p>';
+      t.qs.forEach(function(q, i){ h += qBlock('type_' + t.key, i, q); });
+      h += '</div>';
+    });
+    return h;
+  }
+
+  function buildFields(){
+    var h = '';
+    FIELDS.forEach(function(f, fi){
+      h += '<div class="card">' +
+        (fi === 0 ? '<p class="step-t">STEP 5</p><h2 class="step-h">계열 적합도</h2><p class="step-d" style="margin-bottom:16px">다섯 계열 각 다섯 문항, 모두 스물다섯 문항입니다. 마지막입니다.</p>' : '') +
+        '<p class="step-t" style="margin-bottom:6px">' + esc(f.name) + '</p>' +
+        '<p class="step-d" style="margin-bottom:16px">' + esc(f.majors) + '</p>';
+      f.qs.forEach(function(q, i){ h += qBlock('field_' + f.key, i, q); });
+      h += '</div>';
+    });
+    return h;
+  }
+
+  /* ─────────────────────────────────────────────
+     검증
+     ───────────────────────────────────────────── */
+  function val(id){ var e = document.getElementById(id); return e ? e.value.trim() : ''; }
+
+  function vInfo(){
+    var name = val('i-name'), phone = val('i-phone'), grade = val('i-grade');
+    var agree = document.getElementById('i-agree');
+    if (!name) return '학생 이름을 적어 주세요.';
+    if (!phone) return '연락처를 적어 주세요.';
+    if (!/^[0-9\-\s]{9,}$/.test(phone)) return '연락처를 숫자로 정확히 적어 주세요.';
+    if (!grade) return '학년을 골라 주세요.';
+    if (!agree || !agree.checked) return '개인정보 수집에 동의해 주셔야 결과를 보내 드릴 수 있습니다.';
+    state.info = { name:name, phone:phone, school:val('i-school'), grade:grade, agreed:true };
+    return null;
+  }
+
+  function num(id){ var v = val(id); return v === '' ? null : Number(v); }
+
+  // 내신 칸: 비었으면 null, 적었으면 1.00~9.00 사이의 소수. 잘못 적었으면 NaN.
+  function vGrades(){
+    if (!num('n-all')) return '내신 전 교과 평균 등급을 골라 주세요. 대학 라인을 잡는 기준입니다.';
+    if (!num('m-math')) return '모의고사 수학 등급을 골라 주세요.';
+    state.grades = {
+      naesinKor:num('n-kor'), naesinMath:num('n-math'), naesinEng:num('n-eng'),
+      naesinInq:num('n-inq'), naesinAll:num('n-all'),
+      mockKor:num('m-kor'), mockMath:num('m-math'), mockEng:num('m-eng'),
+      mockInq1:num('m-inq1'), mockInq2:num('m-inq2'), mathChoice:val('m-choice')
+    };
+    return null;
+  }
+
+  function collect(groupId, count){
+    var out = [];
+    for (var i = 0; i < count; i++) {
+      var el = document.querySelector('input[name="' + groupId + '_' + i + '"]:checked');
+      out.push(el ? Number(el.value) : null);
+    }
+    return out;
+  }
+
+  function firstMissing(groupId, count){
+    var a = collect(groupId, count);
+    for (var i = 0; i < a.length; i++) if (a[i] === null) return i;
+    return -1;
+  }
+
+  function scrollToQ(groupId, idx){
+    var el = document.querySelector('label[data-g="' + groupId + '"][data-i="' + idx + '"]');
+    if (el) el.closest('.q').scrollIntoView({ behavior:'smooth', block:'center' });
+  }
+
+  function vCredit(){
+    var m = firstMissing('credit', CREDIT.length);
+    if (m !== -1) { scrollToQ('credit', m); return '아직 고르지 않은 문항이 있습니다.'; }
+    state.credit = collect('credit', CREDIT.length);
+    return null;
+  }
+
+  function vTypes(){
+    for (var i = 0; i < TYPES.length; i++) {
+      var t = TYPES[i], g = 'type_' + t.key;
+      var m = firstMissing(g, t.qs.length);
+      if (m !== -1) { scrollToQ(g, m); return t.name + '에 아직 고르지 않은 문항이 있습니다.'; }
+      state.types[t.key] = collect(g, t.qs.length);
+    }
+    return null;
+  }
+
+  function vFields(){
+    for (var i = 0; i < FIELDS.length; i++) {
+      var f = FIELDS[i], g = 'field_' + f.key;
+      var m = firstMissing(g, f.qs.length);
+      if (m !== -1) { scrollToQ(g, m); return f.name + '에 아직 고르지 않은 문항이 있습니다.'; }
+      state.fields[f.key] = collect(g, f.qs.length);
+    }
+    return null;
+  }
+
+  /* ─────────────────────────────────────────────
+     판정
+     ───────────────────────────────────────────── */
+  function sum(a){ return a.reduce(function(x,y){ return x + (y||0); }, 0); }
+
+  function mockAvg(){
+    var g = state.grades;
+    var arr = [g.mockKor, g.mockMath, g.mockEng, g.mockInq1, g.mockInq2].filter(function(v){ return v; });
+    if (!arr.length) return 9;
+    arr.sort(function(a,b){ return a-b; });
+    var take = arr.slice(0, Math.min(3, arr.length));
+    return take.reduce(function(x,y){ return x+y; }, 0) / take.length;
+  }
+
+  function judge(){
+    var typeScores = TYPES.map(function(t){
+      return { key:t.key, name:t.name, short:t.short, score:sum(state.types[t.key]), max:t.qs.length*2 };
+    });
+    var fieldScores = FIELDS.map(function(f){
+      return { key:f.key, name:f.name, majors:f.majors, score:sum(state.fields[f.key]), max:f.qs.length*2 };
+    });
+    typeScores.sort(function(a,b){ return b.score - a.score; });
+    fieldScores.sort(function(a,b){ return b.score - a.score; });
+
+    var credit = sum(state.credit);
+    var m = mockAvg(), n = state.grades.naesinAll || 9;
+    var line = LINES.filter(function(L){ return L.cond(n); })[0] || LINES[LINES.length-1];
+
+    return { typeScores:typeScores, fieldScores:fieldScores, credit:credit, line:line, mock:m, naesin:n };
+  }
+
+  function creditText(c){
+    if (c >= 10) return { t:'최상', d:'전공과 이어지는 과목을 빠짐없이 들었습니다. 학종 서류에서 이수 노력으로 감점될 일이 없습니다.' };
+    if (c >= 6)  return { t:'보통', d:'무난합니다. 덜 들은 핵심 과목이 있다면 면접에서 왜 그랬는지 설명할 수 있게 준비해 두세요.' };
+    return { t:'취약', d:'전공 관련 과목 이수가 얕습니다. 과목 선택을 정성평가하지 않는 교과 전형이나 약술형 논술 쪽이 안전합니다.' };
+  }
+
+  /* ─────────────────────────────────────────────
+     결과 화면
+     ───────────────────────────────────────────── */
+  var LINE_SHORT = { A:'최상위', B:'상위권', C:'중상위', D:'약술형', E:'최저 없음' };
+  var SHADES = ['#F07020', '#F5A165', '#FAD0AE'];
+  var LAST = null;   // 이미지 카드용으로 마지막 판정을 들고 있는다
+
+  function rankRows(list, unit){
+    return list.map(function(r, i){
+      var pct = r.max ? Math.round(r.score / r.max * 100) : 0;
+      var cls = i === 0 ? 'rank-row top' : (r.score === 0 ? 'rank-row dim' : 'rank-row');
+      return '<div class="' + cls + '">' +
+        '<span class="nm">' + esc(r.short || r.name) + '</span>' +
+        '<span class="tr"><i style="width:' + pct + '%"></i></span>' +
+        '<span class="vl">' + r.score + unit + '</span></div>';
+    }).join('');
+  }
+
+  /* ── 그래프 ────────────────────────────────────────────────
+     한 계열(오렌지) 한 색으로만 그린다. 색이 뜻을 갖는 곳은
+     원서 배분 도넛 하나뿐이고, 거기서도 같은 색의 세 단계만 쓴다. */
+
+  // 원형 게이지, 1순위 전형의 적합도 한 값
+  /* 원호는 stroke-dasharray 와 rotate 로 그리지 않고 좌표로 직접 그린다.
+     이미지로 변환할 때(html2canvas) dasharray 와 transform 이 제대로 옮겨지지 않아
+     게이지와 도넛만 잘려 나오던 문제가 있었다.
+     viewBox 와 width, height 숫자도 반드시 같아야 어긋나지 않는다. */
+  function polarXY(cx, cy, r, deg){
+    var a = (deg - 90) * Math.PI / 180;
+    return [ (cx + r * Math.cos(a)).toFixed(2), (cy + r * Math.sin(a)).toFixed(2) ];
+  }
+
+  function arcPath(cx, cy, r, from, to){
+    if (to - from >= 360) to = from + 359.99;
+    var s = polarXY(cx, cy, r, from), e = polarXY(cx, cy, r, to);
+    return 'M' + s[0] + ' ' + s[1] + ' A' + r + ' ' + r + ' 0 ' +
+           ((to - from) > 180 ? 1 : 0) + ' 1 ' + e[0] + ' ' + e[1];
+  }
+
+  function gaugeSVG(score, max){
+    var pct = max ? Math.round(score / max * 100) : 0;
+    var W = 132, c = W / 2, r = 52;
+    return '<svg class="gauge" viewBox="0 0 ' + W + ' ' + W + '" width="' + W + '" height="' + W + '" ' +
+      'role="img" aria-label="적합도 ' + pct + '퍼센트">' +
+      '<circle cx="' + c + '" cy="' + c + '" r="' + r + '" fill="none" stroke="#EDE8E2" stroke-width="12"/>' +
+      (pct > 0 ? '<path d="' + arcPath(c, c, r, 0, pct * 3.6) + '" fill="none" stroke="#F07020" ' +
+        'stroke-width="12" stroke-linecap="round"/>' : '') +
+      '<text x="' + c + '" y="' + (c - 2) + '" text-anchor="middle" font-size="29" font-weight="900" fill="#1A1A1A">' + pct + '%</text>' +
+      '<text x="' + c + '" y="' + (c + 19) + '" text-anchor="middle" font-size="11.5" fill="#6B6560">적합도</text>' +
+      '</svg>';
+  }
+
+  // 레이더, 여섯 전형의 균형을 한눈에
+  function radarSVG(items){
+    var cx = 150, cy = 148, R = 86, n = items.length, i;
+    function P(idx, ratio){
+      var a = -Math.PI / 2 + idx * 2 * Math.PI / n;
+      return [cx + Math.cos(a) * R * ratio, cy + Math.sin(a) * R * ratio];
+    }
+    function poly(ratio){
+      var pts = [];
+      for (i = 0; i < n; i++) { var p = P(i, ratio); pts.push(p[0].toFixed(1) + ',' + p[1].toFixed(1)); }
+      return pts.join(' ');
+    }
+    var s = '';
+    [0.25, 0.5, 0.75, 1].forEach(function(g){
+      s += '<polygon points="' + poly(g) + '" fill="none" stroke="#EDE8E2" stroke-width="1"/>';
+    });
+    for (i = 0; i < n; i++) {
+      var e = P(i, 1);
+      s += '<line x1="' + cx + '" y1="' + cy + '" x2="' + e[0].toFixed(1) + '" y2="' + e[1].toFixed(1) +
+           '" stroke="#EDE8E2" stroke-width="1"/>';
+    }
+    var dpts = [], dots = '';
+    for (i = 0; i < n; i++) {
+      var ratio = items[i].max ? items[i].score / items[i].max : 0;
+      var p = P(i, Math.max(ratio, 0.03));
+      dpts.push(p[0].toFixed(1) + ',' + p[1].toFixed(1));
+      dots += '<circle cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) +
+              '" r="4.5" fill="#F07020" stroke="#FFFFFF" stroke-width="2"/>';
+    }
+    s += '<polygon points="' + dpts.join(' ') + '" fill="rgba(240,112,32,.15)" stroke="#F07020" ' +
+         'stroke-width="2" stroke-linejoin="round"/>' + dots;
+    for (i = 0; i < n; i++) {
+      var lp = P(i, 1.26), a = -Math.PI / 2 + i * 2 * Math.PI / n;
+      var c = Math.cos(a), sn = Math.sin(a);
+      var anchor = Math.abs(c) < 0.3 ? 'middle' : (c > 0 ? 'start' : 'end');
+      var dy = sn > 0.5 ? 11 : (sn < -0.5 ? -4 : 4);
+      s += '<text x="' + lp[0].toFixed(1) + '" y="' + (lp[1] + dy).toFixed(1) + '" text-anchor="' + anchor +
+           '" font-size="11.5" font-weight="700" fill="#6B6560">' + esc(items[i].label) + '</text>';
+    }
+    return '<svg class="chart" viewBox="0 0 300 296" width="300" height="296" role="img" ' +
+      'aria-label="전형별 적합도 육각 그래프">' + s + '</svg>';
+  }
+
+  // 도넛, 수시 여섯 장을 어디에 걸지
+  function donutSVG(parts){
+    var W = 148, c = W / 2, r = 54, gapDeg = 4, acc = 0, s = '';
+    parts.forEach(function(p, i){
+      var span = 360 * (p.n / 6);
+      var from = acc + gapDeg / 2, to = acc + span - gapDeg / 2;
+      if (to > from) {
+        s += '<path d="' + arcPath(c, c, r, from, to) + '" fill="none" stroke="' +
+             SHADES[i % SHADES.length] + '" stroke-width="17"/>';
+      }
+      acc += span;
+    });
+    return '<svg class="chart" viewBox="0 0 ' + W + ' ' + W + '" width="' + W + '" height="' + W + '" ' +
+      'role="img" aria-label="원서 여섯 장 배분">' + s +
+      '<text x="' + c + '" y="' + (c - 3) + '" text-anchor="middle" font-size="25" font-weight="900" fill="#1A1A1A">6장</text>' +
+      '<text x="' + c + '" y="' + (c + 17) + '" text-anchor="middle" font-size="11" fill="#6B6560">수시 지원</text></svg>';
+  }
+
+  // 12칸 미터, 고교학점제 이수 충실도
+  function segMeter(score, max){
+    var s = '<div class="seg" role="img" aria-label="이수 ' + score + '점, ' + max + '점 만점">';
+    for (var i = 0; i < max; i++) s += '<i class="' + (i < score ? 'on' : '') + '"></i>';
+    return s + '</div>';
+  }
+
+  // 대학 라인 여섯 구간 중 내 위치
+  function lineScale(key){
+    return '<div class="scale">' + LINES.map(function(L){
+      return '<div class="st' + (L.key === key ? ' on' : '') + '">' +
+        '<div class="bx"></div><span class="tx">' + esc(LINE_SHORT[L.key] || L.key) + '</span></div>';
+    }).join('') + '</div>';
+  }
+
+  // 상위 세 전형에 여섯 장을 점수 비례로 나눈다 (각 최소 한 장)
+  function plan6(list){
+    var pool = list.filter(function(t){ return t.score > 0; }).slice(0, 3);
+    if (!pool.length) pool = [list[0]];
+    var total = pool.reduce(function(a, b){ return a + b.score; }, 0) || 1;
+    var rest = 6 - pool.length;
+    var raw = pool.map(function(t){ return rest * (t.score / total); });
+    var out = pool.map(function(t, i){ return { name: t.short || t.name, n: 1 + Math.floor(raw[i]) }; });
+    var used = out.reduce(function(a, b){ return a + b.n; }, 0);
+    var order = raw.map(function(v, i){ return { i: i, f: v - Math.floor(v) }; })
+                   .sort(function(a, b){ return b.f - a.f; });
+    var k = 0;
+    while (used < 6) { out[order[k % order.length].i].n++; used++; k++; }
+    return out;
+  }
+
+  function showResult(){
+    var R = judge();
+    var t0 = R.typeScores[0], t1 = R.typeScores[1];
+    var f0 = R.fieldScores[0];
+    var ct = creditText(R.credit);
+    var tInfo = TYPES.filter(function(x){ return x.key === t0.key; })[0];
+
+    var det = TYPE_DETAIL[t0.key];
+    var parts = plan6(R.typeScores);
+    // 레이더는 순위가 아니라 TYPES 순서 그대로 그려야 모양이 일정하다.
+    var typeFixed = TYPES.map(function(t){
+      return { label:t.short, score:sum(state.types[t.key]), max:t.qs.length * 2 };
+    });
+    R.typeFixed = typeFixed;
+
+    var h = '';
+    h += '<div class="hero">' +
+      '<p class="lab">나에게 맞는 전형</p>' +
+      gaugeSVG(t0.score, t0.max) +
+      '<p class="tag">' + esc(det.tag) + '</p>' +
+      '<h2>' + esc(t0.name) + '</h2>' +
+      '<p class="desc">' + esc(tInfo.desc) + '</p>' +
+      '<div class="pair">' +
+        '<div class="box"><p class="k">함께 볼 전형</p><p class="v">' + esc(t1.name) + '</p></div>' +
+        '<div class="box"><p class="k">잘 맞는 계열</p><p class="v">' + esc(f0.name) + '</p></div>' +
+      '</div>' +
+    '</div>';
+
+    h += '<div class="card"><p class="sec-t">이런 학생입니다</p><div class="detail">' +
+      '<div class="blk"><p class="k">성향</p><p>' + esc(det.who) + '</p></div>' +
+      '<div class="blk"><p class="k">강점</p><p>' + esc(det.strong) + '</p></div>' +
+      '<div class="blk"><p class="k">지금 할 일</p><ol>' +
+        det.todo.map(function(t){ return '<li>' + esc(t) + '</li>'; }).join('') +
+      '</ol></div>' +
+      '<div class="blk"><p class="k">주의할 점</p><p class="warn">' + esc(det.watch) + '</p></div>' +
+    '</div></div>';
+
+    h += '<div class="card"><p class="sec-t">전형별 적합도</p>' +
+      radarSVG(typeFixed) +
+      '<div class="rank" style="margin-top:6px">' + rankRows(R.typeScores, '점') + '</div>' +
+      '<p class="note" style="text-align:left;margin-top:14px">각 10점 만점입니다. 위 두 전형에 원서를 몰아 주는 것이 기본입니다.</p></div>';
+
+    h += '<div class="card"><p class="sec-t">수시 여섯 장, 이렇게 나눕니다</p>' +
+      donutSVG(parts) +
+      '<div class="legend">' + parts.map(function(p, i){
+        return '<div class="row"><span class="dot" style="background:' + SHADES[i % SHADES.length] + '"></span>' +
+          '<span class="nm">' + esc(p.name) + '</span><span class="vl">' + p.n + '장</span></div>';
+      }).join('') + '</div>' +
+      '<p class="note" style="text-align:left;margin-top:14px">적합도 점수로 나눈 제안입니다. 실제 여섯 장은 성적표와 생활기록부를 함께 놓고 확정합니다.</p></div>';
+
+    h += '<div class="card"><p class="sec-t">계열 적합도</p><div class="rank">' +
+      rankRows(R.fieldScores.map(function(f){ return { short:f.name, score:f.score, max:f.max }; }), '점') + '</div>' +
+      '<div class="line-box" style="margin-top:16px">' +
+        '<p class="k">가장 잘 맞는 계열</p>' +
+        '<p class="v">' + esc(f0.name) + '</p>' +
+        '<p class="d">' + esc(f0.majors) + '</p>' +
+        '<p class="d" style="margin-top:8px"><b>이런 일로 이어집니다</b><br>' + esc(FIELD_JOBS[f0.key] || '') + '</p>' +
+      '</div></div>';
+
+    h += '<div class="card"><p class="sec-t">고교학점제 과목 이수</p>' +
+      segMeter(R.credit, 12) +
+      '<p class="note" style="text-align:left;margin:0 0 13px">' + R.credit + '점 / 12점 만점</p>' +
+      '<div class="line-box" style="margin-top:0">' +
+        '<p class="k">' + esc(ct.t) + ' 이수</p>' +
+        '<p class="d">' + esc(ct.d) + '</p>' +
+      '</div></div>';
+
+    var mc = minCheck(R.mock);
+    var nc = nonsulCard(R.mock, R.naesin);
+
+    h += '<div class="card"><p class="sec-t">성적으로 본 대학 라인</p>' +
+      lineScale(R.line.key) +
+      '<div class="line-box" style="margin-top:0">' +
+        '<p class="k">' + esc(R.line.name) + '</p>' +
+        '<p class="v">' + esc(R.line.unis) + '</p>' +
+        '<p class="d">' + esc(R.line.plan) + '</p>' +
+      '</div>' +
+      '<div class="detail" style="margin-top:16px">' +
+        '<div class="blk"><p class="k">수능 최저 · ' + esc(mc.k) + '</p><p>' + esc(mc.d) + '</p></div>' +
+        (nc
+          ? '<div class="blk"><p class="k">논술 역전 카드</p>' +
+            '<p style="font-weight:700;margin-bottom:5px">' + esc(nc.unis) + '</p>' +
+            '<p>' + esc(nc.desc) + '</p></div>'
+          : '') +
+      '</div>' +
+      '<p class="note" style="text-align:left">내신 전 교과 ' + R.naesin + '등급으로 라인을 잡고, ' +
+      '모의고사 상위 세 과목 평균 ' + (Math.round(R.mock * 10) / 10) + '등급으로 최저 충족을 봤습니다.</p></div>';
+
+    h += '<div class="card"><p class="sec-t">결과지 내려받기</p>' +
+      '<p class="step-d" style="margin:0">여기까지 본 내용을 상담용 <b>A4 두 장</b>짜리 리포트로 정리해 드립니다. ' +
+      '버튼을 누르면 이미지로 만들어진 결과지가 열리고, 거기서 PDF 저장과 카카오톡 공유를 하실 수 있습니다.</p>' +
+      '<div class="share-btns">' +
+        '<button type="button" class="save" id="btnReport" style="grid-column:1/-1">결과지 보기</button>' +
+      '</div>' +
+      '<p class="share-note" id="reportNote"></p></div>';
+
+    h += '<div class="cta">' +
+      '<h2>여기까지가 방향입니다</h2>' +
+      '<p>실제로 어느 대학 어느 학과에 여섯 장을 어떻게 나눌지는<br>성적표와 생활기록부를 함께 놓고 봐야 정해집니다.</p>' +
+      '<a class="primary" href="https://booking.naver.com/booking/13/bizes/1275673" target="_blank" rel="noopener">수시 면담 예약하기</a>' +
+      '<a class="ghost2" href="https://m.blog.naver.com/clsjn?tab=1" target="_blank" rel="noopener">CLS 블로그에서 입시 정보 보기</a>' +
+    '</div>';
+
+    h += '<p class="note" id="sendNote">진단 결과를 CLS에듀케이션으로 보내는 중입니다.</p>';
+
+    document.getElementById('result').innerHTML = h;
+    document.getElementById('result').classList.remove('hidden');
+    stepsEl.innerHTML = '';
+    document.getElementById('nav').classList.add('hidden');
+    document.getElementById('barWrap').classList.add('hidden');
+    window.scrollTo({ top:0, behavior:'smooth' });
+
+    LAST = R;
+    buildReport(R, det, parts, mc, nc, ct);
+    wireShare();
+    send(R);
+  }
+
+  /* ─────────────────────────────────────────────
+     A4 결과지
+     화면 밖 #report 에 두 장을 그려 두고
+     인쇄(PDF 저장)와 이미지 저장, 공유에 함께 쓴다.
+     ───────────────────────────────────────────── */
+  function pad2(n){ return (n < 10 ? '0' : '') + n; }
+
+  function todayStr(){
+    var d = new Date();
+    return d.getFullYear() + '. ' + pad2(d.getMonth() + 1) + '. ' + pad2(d.getDate());
+  }
+
+  function rpBars(list, unit){
+    return '<div class="rp-bars">' + list.map(function(r, i){
+      var pct = r.max ? Math.round(r.score / r.max * 100) : 0;
+      var cls = i === 0 ? 'rp-bar top' : (r.score === 0 ? 'rp-bar dim' : 'rp-bar');
+      return '<div class="' + cls + '">' +
+        '<span class="nm">' + esc(r.short || r.name) + '</span>' +
+        '<span class="tr"><i style="width:' + pct + '%"></i></span>' +
+        '<span class="vl">' + r.score + unit + '</span></div>';
+    }).join('') + '</div>';
+  }
+
+  function rpSeg(score, max){
+    var s = '<div class="rp-seg">';
+    for (var i = 0; i < max; i++) s += '<i class="' + (i < score ? 'on' : '') + '"></i>';
+    return s + '</div>';
+  }
+
+  /* 결과지 그래프는 SVG 대신 캔버스에 직접 그린다.
+     화면에서는 SVG가 잘 보이지만, 결과지를 이미지로 바꾸는 단계에서
+     원호가 잘려 나오는 일이 있어 결과지에서만 방식을 바꿨다. */
+  var CF = '"Noto Sans KR", -apple-system, BlinkMacSystemFont, sans-serif';
+  var chartsReady = false, chartsWaiting = [];
+
+  function onCharts(fn){
+    if (chartsReady) { fn(); return; }
+    chartsWaiting.push(fn);
+  }
+
+  function markCharts(){
+    chartsReady = true;
+    chartsWaiting.forEach(function(f){ f(); });
+    chartsWaiting = [];
+  }
+
+  function withFonts(fn){
+    if (!document.fonts || !document.fonts.load) { fn(); return; }
+    Promise.all([
+      document.fonts.load('900 29px "Noto Sans KR"'),
+      document.fonts.load('700 12px "Noto Sans KR"'),
+      document.fonts.load('400 11px "Noto Sans KR"')
+    ]).then(function(){ fn(); }, function(){ fn(); });
+  }
+
+  function chartCanvas(w, h, draw){
+    var c = document.createElement('canvas'), dpr = 2;
+    c.width = w * dpr; c.height = h * dpr;
+    c.style.width = w + 'px'; c.style.height = h + 'px';
+    c.style.display = 'block';
+    c.style.flex = '0 0 auto';
+    var x = c.getContext('2d');
+    x.scale(dpr, dpr);
+    draw(x);
+    return c;
+  }
+
+  function drawGaugeC(x, score, max){
+    var pct = max ? Math.round(score / max * 100) : 0, c = 66, r = 52;
+    x.lineWidth = 12; x.lineCap = 'round';
+    x.strokeStyle = '#EDE8E2';
+    x.beginPath(); x.arc(c, c, r, 0, Math.PI * 2); x.stroke();
+    if (pct > 0) {
+      x.strokeStyle = '#F07020';
+      x.beginPath();
+      x.arc(c, c, r, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * pct / 100);
+      x.stroke();
+    }
+    x.textAlign = 'center';
+    x.fillStyle = '#1A1A1A'; x.font = '900 29px ' + CF;
+    x.fillText(pct + '%', c, c + 4);
+    x.fillStyle = '#6B6560'; x.font = '400 11.5px ' + CF;
+    x.fillText('적합도', c, c + 22);
+  }
+
+  function drawRadarC(x, items){
+    var cx = 150, cy = 148, R = 86, n = items.length, i;
+    function P(idx, ratio){
+      var a = -Math.PI / 2 + idx * 2 * Math.PI / n;
+      return [cx + Math.cos(a) * R * ratio, cy + Math.sin(a) * R * ratio];
+    }
+    function ring(ratio){
+      x.beginPath();
+      for (i = 0; i < n; i++) { var p = P(i, ratio); if (i) x.lineTo(p[0], p[1]); else x.moveTo(p[0], p[1]); }
+      x.closePath();
+    }
+    x.lineWidth = 1; x.strokeStyle = '#EDE8E2';
+    [0.25, 0.5, 0.75, 1].forEach(function(g){ ring(g); x.stroke(); });
+    for (i = 0; i < n; i++) {
+      var e = P(i, 1);
+      x.beginPath(); x.moveTo(cx, cy); x.lineTo(e[0], e[1]); x.stroke();
+    }
+    x.beginPath();
+    for (i = 0; i < n; i++) {
+      var r0 = items[i].max ? items[i].score / items[i].max : 0;
+      var p = P(i, Math.max(r0, 0.03));
+      if (i) x.lineTo(p[0], p[1]); else x.moveTo(p[0], p[1]);
+    }
+    x.closePath();
+    x.fillStyle = 'rgba(240,112,32,.15)'; x.fill();
+    x.strokeStyle = '#F07020'; x.lineWidth = 2; x.lineJoin = 'round'; x.stroke();
+    for (i = 0; i < n; i++) {
+      var r1 = items[i].max ? items[i].score / items[i].max : 0;
+      var p2 = P(i, Math.max(r1, 0.03));
+      x.beginPath(); x.arc(p2[0], p2[1], 4.5, 0, Math.PI * 2);
+      x.fillStyle = '#F07020'; x.fill();
+      x.lineWidth = 2; x.strokeStyle = '#FFFFFF'; x.stroke();
+    }
+    x.font = '700 11.5px ' + CF; x.fillStyle = '#6B6560';
+    for (i = 0; i < n; i++) {
+      var lp = P(i, 1.26), a = -Math.PI / 2 + i * 2 * Math.PI / n;
+      var cs = Math.cos(a), sn = Math.sin(a);
+      x.textAlign = Math.abs(cs) < 0.3 ? 'center' : (cs > 0 ? 'left' : 'right');
+      x.fillText(items[i].label, lp[0], lp[1] + (sn > 0.5 ? 12 : (sn < -0.5 ? -3 : 4)));
+    }
+  }
+
+  function drawDonutC(x, parts){
+    var c = 74, r = 54, gap = 0.04, acc = -Math.PI / 2;
+    x.lineWidth = 17; x.lineCap = 'butt';
+    parts.forEach(function(p, i){
+      var span = Math.PI * 2 * (p.n / 6);
+      x.strokeStyle = SHADES[i % SHADES.length];
+      x.beginPath(); x.arc(c, c, r, acc + gap, acc + span - gap); x.stroke();
+      acc += span;
+    });
+    x.textAlign = 'center';
+    x.fillStyle = '#1A1A1A'; x.font = '900 25px ' + CF;
+    x.fillText('6장', c, c + 2);
+    x.fillStyle = '#6B6560'; x.font = '400 11px ' + CF;
+    x.fillText('수시 지원', c, c + 20);
+  }
+
+  function paintReportCharts(R, parts){
+    withFonts(function(){
+      var slot = function(name){ return document.querySelector('#report [data-chart="' + name + '"]'); };
+      var g = slot('gauge'), rd = slot('radar'), dn = slot('donut');
+      var t0 = R.typeScores[0];
+      if (g)  { g.innerHTML = '';  g.appendChild(chartCanvas(132, 132, function(x){ drawGaugeC(x, t0.score, t0.max); })); }
+      if (rd) { rd.innerHTML = ''; rd.appendChild(chartCanvas(300, 296, function(x){ drawRadarC(x, R.typeFixed); })); }
+      if (dn) { dn.innerHTML = ''; dn.appendChild(chartCanvas(148, 148, function(x){ drawDonutC(x, parts); })); }
+      markCharts();
+    });
+  }
+
+  function rpHead(){
+    return '<div class="rp-top">' +
+      '<p class="rp-brand">CLS EDUCATION <span>| 입시전략 코칭센터</span></p>' +
+      '<p class="rp-date">진단일 ' + todayStr() + '</p>' +
+    '</div>';
+  }
+
+  function rpFoot(no){
+    return '<div class="rp-foot">' +
+      '<span>CLS에듀케이션 · 서울 중랑구 봉화산로 218 영창빌딩 7층</span>' +
+      '<span>' + no + ' / 2</span></div>';
+  }
+
+  function buildReport(R, det, parts, mc, nc, ct){
+    var t0 = R.typeScores[0], t1 = R.typeScores[1], f0 = R.fieldScores[0];
+    var tInfo = TYPES.filter(function(x){ return x.key === t0.key; })[0];
+    var coach = TYPE_COACH[t0.key] || [];
+    var info = state.info;
+
+    var msg = (info.name || '학생') + ' 학생은 ' + t0.name + '에 강점이 뚜렷합니다. ' + det.strong +
+      ' 남은 기간에는 위 실천 약속의 첫 항목부터 함께 잡아 가겠습니다. ' +
+      '실제 여섯 장은 성적표와 생활기록부를 함께 놓고 면담에서 확정하겠습니다.';
+
+    var guide = '본 진단은 학생이 직접 답한 61문항과 입력한 성적을 바탕으로 한 방향 참고 자료입니다. ' +
+      '실제 지원 대학과 학과는 성적표와 생활기록부, 모집요강을 함께 확인한 뒤 면담에서 확정합니다. ' +
+      '수집한 정보는 면담 종료 후 6개월간 보관하고 그 뒤 파기합니다.';
+
+    var h = '';
+
+    /* ── 1장 ── */
+    h += '<section class="sheet">' +
+      rpHead() +
+      '<h1 class="rp-title">수시 지원 전략 진단 리포트</h1>' +
+      '<p class="rp-sub">내신과 모의고사, 61문항으로 본 전형 적합도와 지원 전략</p>' +
+      '<div class="rp-rule"></div>' +
+
+      '<div class="rp-meta">' +
+        '<div><span>학생 성명</span><b>' + esc(info.name || '-') + '</b></div>' +
+        '<div><span>학년</span><b>' + esc(info.grade || '-') + '</b></div>' +
+        '<div><span>학교</span><b>' + esc(info.school || '미기재') + '</b></div>' +
+        '<div><span>핵심 유형</span><b>' + esc(det.tag) + '</b></div>' +
+      '</div>' +
+
+      '<div class="rp-sec">' +
+        '<h2 class="rp-h"><i>1</i>진단 개요 및 종합 결과</h2>' +
+        '<div class="rp-grid2">' +
+          '<div class="rp-box center">' +
+            '<div data-chart="gauge" style="margin-bottom:3.5mm"></div>' +
+            '<p class="rp-badge">' + esc(t0.name) + '</p>' +
+            '<p class="rp-cap" style="margin-top:2.5mm">함께 볼 전형 · ' + esc(t1.name) + '</p>' +
+          '</div>' +
+          '<div class="rp-box">' +
+            '<p class="rp-k">총평</p>' +
+            '<p>' + esc(tInfo.desc) + '</p>' +
+            '<p>' + esc(det.who) + '</p>' +
+            '<p><b>강점</b> ' + esc(det.strong) + '</p>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+
+      '<div class="rp-sec">' +
+        '<h2 class="rp-h"><i>2</i>전형별 적합도</h2>' +
+        '<div class="rp-grid2 wide-left">' +
+          '<div class="rp-col">' + rpBars(R.typeScores, '점') +
+            '<p class="rp-note-sm">각 10점 만점입니다. 위 두 전형에 원서를 몰아 주는 것이 기본입니다.</p>' +
+          '</div>' +
+          '<div class="rp-chart" data-chart="radar"></div>' +
+        '</div>' +
+      '</div>' +
+
+      '<div class="rp-sec">' +
+        '<h2 class="rp-h"><i>3</i>계열 적합도</h2>' +
+        '<div class="rp-grid2 wide-left">' +
+          '<div class="rp-col">' + rpBars(R.fieldScores.map(function(f){
+            return { short:f.name, score:f.score, max:f.max };
+          }), '점') + '</div>' +
+          '<div class="rp-box">' +
+            '<p class="rp-k">가장 잘 맞는 계열</p>' +
+            '<p style="font-size:11pt;font-weight:900">' + esc(f0.name) + '</p>' +
+            '<p>' + esc(f0.majors) + '</p>' +
+            '<p class="rp-cap"><b>이런 일로 이어집니다</b><br>' + esc(FIELD_JOBS[f0.key] || '') + '</p>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+
+      rpFoot(1) +
+    '</section>';
+
+    /* ── 2장 ── */
+    h += '<section class="sheet">' +
+      rpHead() +
+      '<p class="rp-sub" style="margin:0"><b style="color:#111;font-size:11pt">수시 지원 전략 진단 리포트</b>' +
+        (info.name ? ' · ' + esc(info.name) : '') + '</p>' +
+      '<div class="rp-rule"></div>' +
+
+      '<div class="rp-sec">' +
+        '<h2 class="rp-h"><i>4</i>성적으로 본 대학 라인</h2>' +
+        '<table class="rp-table"><tbody>' +
+          '<tr><th>대학 라인</th><td><b>' + esc(R.line.name) + '</b> · ' + esc(R.line.unis) + '<br>' + esc(R.line.plan) + '</td></tr>' +
+          '<tr><th>수능 최저</th><td><b>' + esc(mc.k) + '</b> · ' + esc(mc.d) + '</td></tr>' +
+          (nc ? '<tr><th>논술 역전 카드</th><td><b>' + esc(nc.unis) + '</b><br>' + esc(nc.desc) + '</td></tr>' : '') +
+        '</tbody></table>' +
+        '<p class="rp-note-sm">내신 전 교과 ' + R.naesin + '등급으로 라인을 잡고, 모의고사 상위 세 과목 평균 ' +
+        (Math.round(R.mock * 10) / 10) + '등급으로 최저 충족을 봤습니다.</p>' +
+      '</div>' +
+
+      '<div class="rp-sec">' +
+        '<h2 class="rp-h"><i>5</i>수시 여섯 장 배분 제안</h2>' +
+        '<div class="rp-grid2">' +
+          '<div class="rp-chart" data-chart="donut"></div>' +
+          '<div class="rp-col">' +
+            '<table class="rp-table"><thead><tr><th>전형</th><th style="width:18mm">장수</th></tr></thead><tbody>' +
+            parts.map(function(p){
+              return '<tr><td>' + esc(p.name) + '</td><td><b>' + p.n + '장</b></td></tr>';
+            }).join('') +
+            '</tbody></table>' +
+            '<p class="rp-note-sm">적합도 점수로 나눈 제안입니다. 실제 여섯 장은 면담에서 확정합니다.</p>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+
+      '<div class="rp-sec">' +
+        '<h2 class="rp-h"><i>6</i>고교학점제 과목 이수</h2>' +
+        rpSeg(R.credit, 12) +
+        '<p><b>' + esc(ct.t) + ' 이수</b> · ' + R.credit + '점 / 12점 만점 — ' + esc(ct.d) + '</p>' +
+      '</div>' +
+
+      '<div class="rp-sec">' +
+        '<h2 class="rp-h"><i>7</i>지금부터 할 일</h2>' +
+        '<table class="rp-table"><thead><tr>' +
+          '<th style="width:7mm"></th><th>학생 실천 약속</th><th>CLS 코칭 방향</th>' +
+        '</tr></thead><tbody>' +
+        det.todo.map(function(t, i){
+          return '<tr><td style="text-align:center;font-weight:700">' + (i + 1) + '</td>' +
+            '<td>' + esc(t) + '</td><td>' + esc(coach[i] || '') + '</td></tr>';
+        }).join('') +
+        '</tbody></table>' +
+        '<p class="rp-note-sm"><b>주의</b> ' + esc(det.watch) + '</p>' +
+      '</div>' +
+
+      '<div class="rp-sec"><div class="rp-msg">' +
+        '<p class="rp-k">원장 동행 메시지</p>' +
+        '<p>' + esc(msg) + '</p>' +
+      '</div></div>' +
+
+      '<div class="rp-guide">' + esc(guide) + '</div>' +
+
+      rpFoot(2) +
+    '</section>';
+
+    document.getElementById('report').innerHTML = h;
+    paintReportCharts(R, parts);
+  }
+
+  /* ── 저장과 공유 ───────────────────────────── */
+  var REPORT_FILES = [];   // 페이지별 PNG Blob
+
+  function shareNote(t){
+    var el = document.getElementById('shareNote');
+    if (el) el.innerHTML = t;
+  }
+
+  function fileBase(){
+    return 'CLS-수시진단-' + (state.info.name || '결과');
+  }
+
+  // 이미지 저장에만 쓰는 라이브러리라 결과 화면에서 그때 불러온다.
+  function loadH2C(cb){
+    if (window.html2canvas) { cb(true); return; }
+    var s = document.createElement('script');
+    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+    s.onload = function(){ cb(!!window.html2canvas); };
+    s.onerror = function(){ cb(false); };
+    document.head.appendChild(s);
+  }
+
+  function renderPages(cb){
+    var sheets = [].slice.call(document.querySelectorAll('#report .sheet'));
+    var out = [];
+    (function next(i){
+      if (i >= sheets.length) { cb(out); return; }
+      window.html2canvas(sheets[i], {
+        scale: 2, backgroundColor: '#ffffff', useCORS: true, logging: false
+      }).then(function(canvas){
+        canvas.toBlob(function(b){
+          // 미리보기는 base64 대신 객체 URL을 쓴다. A4 두 장이면 base64는 수 MB가 된다.
+          out.push({ blob: b, url: URL.createObjectURL(b) });
+          next(i + 1);
+        }, 'image/png');
+      }, function(){ cb(out); });
+    })(0);
+  }
+
+  function savePdf(){
+    shareNote('인쇄 창에서 <b>대상을 PDF로 저장</b>으로 고르시면 A4 파일로 받으실 수 있습니다.');
+    window.print();
+  }
+
+  function saveImages(){
+    if (!REPORT_FILES.length) { shareNote('이미지를 아직 만들지 못했습니다. 잠시 후 다시 눌러 주세요.'); return; }
+    REPORT_FILES.forEach(function(f, i){
+      var url = URL.createObjectURL(f.blob);
+      var a = document.createElement('a');
+      a.href = url; a.download = fileBase() + '-' + (i + 1) + '.png';
+      document.body.appendChild(a); a.click();
+      setTimeout(function(){ URL.revokeObjectURL(url); a.remove(); }, 1500);
+    });
+    shareNote('결과지 ' + REPORT_FILES.length + '장을 저장했습니다. 사진첩이나 다운로드 폴더에서 확인해 주세요.');
+  }
+
+  // 결과지 이미지를 File 로 만든다. 만들지 못하면 빈 배열.
+  function shareFiles(){
+    var files = [];
+    try {
+      REPORT_FILES.forEach(function(f, i){
+        files.push(new File([f.blob], fileBase() + '-' + (i + 1) + '.png', { type:'image/png' }));
+      });
+    } catch (e) { files = []; }
+    return files;
+  }
+
+  /* 파일 공유가 되는 기기인지 미리 본다.
+     휴대폰(iOS·안드로이드)은 되고, 대부분의 PC 브라우저는 되지 않는다.
+     미리보기 링크 안(아티팩트)에서는 브라우저가 막아 어디서도 되지 않는다. */
+  function canShareFiles(){
+    try {
+      var files = shareFiles();
+      return !!(files.length && navigator.share && navigator.canShare && navigator.canShare({ files:files }));
+    } catch (e) { return false; }
+  }
+
+  function canCopyImage(){
+    return !!(navigator.clipboard && window.ClipboardItem && navigator.clipboard.write);
+  }
+
+  function shareImages(){
+    if (!REPORT_FILES.length) { shareNote('이미지를 아직 만들지 못했습니다. 잠시 후 다시 눌러 주세요.'); return; }
+
+    var files = shareFiles();
+    if (canShareFiles()) {
+      navigator.share({
+        files: files,
+        title: '수시 지원 전략 진단 리포트',
+        text: 'CLS에듀케이션 수시 진단 결과지입니다.'
+      }).then(function(){
+        shareNote('공유했습니다.');
+      }, function(err){
+        // 사용자가 취소한 것과 기기가 막은 것을 구분해 알려 준다.
+        if (err && err.name === 'AbortError') return;
+        shareNote('이 화면에서는 공유가 막혀 있습니다.<br><b>이미지 저장</b>을 누른 뒤 카카오톡에서 사진으로 보내 주세요.');
+      });
+      return;
+    }
+
+    // 공유가 안 되는 기기에서는 클립보드 복사로 대신한다 (PC 카카오톡에 바로 붙여넣기).
+    if (canCopyImage()) {
+      copyFirstImage();
+      return;
+    }
+
+    saveImages();
+    shareNote('이 기기는 바로 공유가 되지 않아 이미지로 저장했습니다.<br>카카오톡에서 사진으로 보내 주세요.');
+  }
+
+  function copyFirstImage(){
+    try {
+      navigator.clipboard.write([
+        new window.ClipboardItem({ 'image/png': REPORT_FILES[0].blob })
+      ]).then(function(){
+        shareNote('결과지 1장을 복사했습니다. 카카오톡 대화창에 붙여넣기 하세요.<br>2장 모두 필요하시면 <b>이미지 저장</b>을 눌러 주세요.');
+      }, function(){
+        saveImages();
+        shareNote('복사가 되지 않아 이미지로 저장했습니다. 카카오톡에서 사진으로 보내 주세요.');
+      });
+    } catch (e) {
+      saveImages();
+    }
+  }
+
+  /* 기기가 할 수 있는 일에 맞춰 버튼 이름과 안내를 바꾼다.
+     아무 반응 없는 버튼을 두지 않기 위해서다. */
+  function setupShareButton(){
+    var share = document.getElementById('btnShare');
+    if (!share) return;
+    if (canShareFiles()) {
+      share.textContent = '공유하기';
+      shareNote('공유하기를 누르면 카카오톡을 고를 수 있습니다.');
+    } else if (canCopyImage()) {
+      share.textContent = '이미지 복사';
+      shareNote('휴대폰에서 열면 <b>공유하기</b>로 카카오톡에 바로 보낼 수 있습니다.<br>지금 기기에서는 복사해 붙여넣기 하세요.');
+    } else {
+      share.textContent = '이미지 저장';
+      shareNote('이 기기에서는 바로 공유가 되지 않습니다. 저장한 뒤 사진으로 보내 주세요.');
+    }
+  }
+
+  function reportNote(t){
+    var el = document.getElementById('reportNote');
+    if (el) el.innerHTML = t;
+  }
+
+  function openView(){
+    var v = document.getElementById('rpView');
+    if (!v) return;
+    v.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeView(){
+    var v = document.getElementById('rpView');
+    if (!v) return;
+    v.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  /* 버튼을 누른 뒤에 이미지를 만든다.
+     A4 두 장을 미리 그려 두면 결과 화면이 뜨는 속도가 느려진다. */
+  function showReport(){
+    var btn = document.getElementById('btnReport');
+    var prev = document.getElementById('rpPreview');
+
+    if (REPORT_FILES.length) { openView(); return; }
+
+    if (btn) { btn.disabled = true; btn.textContent = '결과지를 만드는 중입니다'; }
+    reportNote('잠시만 기다려 주세요. 5초 정도 걸립니다.');
+
+    loadH2C(function(ok){
+      if (!ok) {
+        if (btn) { btn.disabled = false; btn.textContent = '결과지 보기'; }
+        reportNote('이미지를 만들지 못했습니다. 화면을 캡처해 주시거나 학원으로 알려 주세요.');
+        return;
+      }
+      onCharts(function(){        // 그래프가 다 그려진 뒤에 이미지로 옮긴다
+      renderPages(function(files){
+        REPORT_FILES = files;
+        if (btn) { btn.disabled = false; btn.textContent = '결과지 보기'; }
+
+        if (!files.length) {
+          reportNote('이미지를 만들지 못했습니다. 화면을 캡처해 주시거나 학원으로 알려 주세요.');
+          return;
+        }
+
+        prev.innerHTML = files.map(function(f, i){
+          return '<img src="' + f.url + '" alt="결과지 ' + (i + 1) + '장">';
+        }).join('') + '<p>A4 두 장짜리 상담 리포트입니다.<br>아래에서 저장하거나 바로 보내실 수 있습니다.</p>';
+
+        reportNote('결과지가 준비되었습니다.');
+        setupShareButton();
+        openView();
+      });
+      });
+    });
+  }
+
+  function wireShare(){
+    var open = document.getElementById('btnReport');
+    if (open) open.addEventListener('click', showReport);
+
+    var close = document.getElementById('rpClose');
+    if (close) close.addEventListener('click', closeView);
+
+    // 한 번만 연결한다. 결과 화면을 다시 그려도 이 버튼들은 그대로 남는다.
+    var pdf = document.getElementById('btnPdf');
+    if (pdf && !pdf.dataset.wired) {
+      pdf.dataset.wired = '1';
+      pdf.addEventListener('click', savePdf);
+      document.getElementById('btnSave').addEventListener('click', saveImages);
+      document.getElementById('btnShare').addEventListener('click', shareImages);
+    }
+  }
+
+  /* ─────────────────────────────────────────────
+     학원으로 전송
+     결과 화면 아래 문구를 실제 전송 결과에 맞춰 바꾼다.
+     ───────────────────────────────────────────── */
+  function note(text){
+    var el = document.getElementById('sendNote');
+    if (el) el.innerHTML = text;
+  }
+
+  /* 보낼 곳 설정
+     SHEET_URL 에 구글 Apps Script 배포 주소를 넣으면 스프레드시트로 한 줄씩 쌓인다.
+     설정 방법은 docs/susi-google-sheet.md 참고.
+     서버 DB(/api/susi)도 그대로 살아 있으니 나중에 SEND_TO_API 를 true 로 바꾸면 함께 저장된다. */
+  var SHEET_URL = '';
+  var SEND_TO_API = false;
+
+  function flatScores(list){
+    var o = {};
+    list.forEach(function(s){ o[s.key] = s.score; });
+    return o;
+  }
+
+  // 스프레드시트 한 줄에 들어갈 모양
+  function sheetPayload(R){
+    var t0 = R.typeScores[0], t1 = R.typeScores[1], f0 = R.fieldScores[0];
+    var g = state.grades;
+    return {
+      submittedAt: new Date().toISOString(),
+      name: state.info.name,
+      phone: state.info.phone,
+      school: state.info.school || '',
+      grade: state.info.grade,
+      naesin: { kor:g.naesinKor, math:g.naesinMath, eng:g.naesinEng, inq:g.naesinInq, all:g.naesinAll },
+      mock: { kor:g.mockKor, math:g.mockMath, eng:g.mockEng, inq1:g.mockInq1, inq2:g.mockInq2 },
+      mathChoice: g.mathChoice || '',
+      topType: t0.key, topTypeName: t0.name, secondTypeName: t1.name,
+      topField: f0.key, topFieldName: f0.name,
+      credit: R.credit,
+      lineKey: R.line.key, lineName: R.line.name,
+      typeScores: flatScores(R.typeScores),
+      fieldScores: flatScores(R.fieldScores),
+      plan: plan6(R.typeScores).map(function(p){ return p.name + ' ' + p.n + '장'; }).join(' / '),
+      answers: { credit:state.credit, types:state.types, fields:state.fields }
+    };
+  }
+
+  function send(R){
+    if (state.demo) {
+      note('미리보기 화면이라 결과를 보내지 않았습니다.');
+      return;
+    }
+
+    var jobs = [];
+
+    if (SHEET_URL) {
+      // Apps Script 는 text/plain 으로 보내야 사전 요청(preflight) 없이 통과한다.
+      jobs.push(fetch(SHEET_URL, {
+        method:'POST',
+        headers:{ 'Content-Type':'text/plain;charset=utf-8' },
+        body: JSON.stringify(sheetPayload(R))
+      }));
+    }
+
+    if (SEND_TO_API) {
+      jobs.push(fetch('/api/susi', {
+        method:'POST',
+        headers:{ 'Content-Type':'application/json' },
+        body: JSON.stringify({
+          info: state.info,
+          grades: state.grades,
+          answers: { credit:state.credit, types:state.types, fields:state.fields }
+        })
+      }));
+    }
+
+    if (!jobs.length) {
+      note('아래 결과지 보기에서 저장해 두셨다가 면담 때 보여 주세요.');
+      return;
+    }
+
+    Promise.all(jobs.map(function(p){
+      return p.then(function(res){ return !!res && (res.ok || res.type === 'opaque'); }, function(){ return false; });
+    })).then(function(results){
+      var ok = results.some(function(v){ return v; });
+      note(ok
+        ? '진단 결과가 CLS에듀케이션으로 전달되었습니다.<br>면담 전에 원장이 미리 살펴본 뒤 준비합니다.'
+        : '결과를 보내지 못했습니다.<br>아래 결과지 보기에서 저장해 학원으로 보내 주시면 도와드리겠습니다.');
+    });
+  }
+
+  /* ─────────────────────────────────────────────
+     흐름
+     ───────────────────────────────────────────── */
+  function render(){
+    var i = state.step;
+    if (i === 0 && !state.started) {
+      stepsEl.innerHTML = '<div class="card">' +
+        '<p class="step-t">시작하기 전에</p>' +
+        '<h2 class="step-h">10분이면 끝납니다</h2>' +
+        '<p class="step-d">성적 입력과 61문항으로 나에게 맞는 전형과 계열, 대학 라인을 잡습니다.</p>' +
+        '<div class="howto" style="margin-top:16px"><b>이렇게 진행합니다</b><br>' +
+        '1. 기본 정보, 2. 성적 입력, 3. 과목 이수 6문항<br>4. 전형 적합도 30문항, 5. 계열 적합도 25문항</div>' +
+        '<p class="step-d">맞고 틀린 답은 없습니다. 지금 내 모습 그대로 골라 주세요.</p>' +
+        '</div>';
+      nextBtn.textContent = '시작하기';
+      prevBtn.classList.add('hidden');
+      setBar(0, '시작');
+      return;
+    }
+    var S = STEPS[i];
+    stepsEl.innerHTML = S.build();
+    nextBtn.textContent = (i === STEPS.length - 1) ? '결과 보기' : '다음';
+    prevBtn.classList.toggle('hidden', i === 0);
+    setBar((i / STEPS.length) * 100, S.name, i + 1);
+    restore(i);
+    window.scrollTo({ top:0, behavior:'smooth' });
+  }
+
+  function setBar(pct, name, no){
+    progEl.style.width = pct + '%';
+    stepNameEl.textContent = name;
+    stepNoEl.textContent = no || 0;
+  }
+
+  // 이전으로 돌아왔을 때 고른 값 되살리기
+  function restore(i){
+    if (i === 0 && state.info.name) {
+      document.getElementById('i-name').value = state.info.name;
+      document.getElementById('i-phone').value = state.info.phone;
+      document.getElementById('i-school').value = state.info.school || '';
+      document.getElementById('i-grade').value = state.info.grade;
+      document.getElementById('i-agree').checked = !!state.info.agreed;
+    }
+    if (i === 1 && state.grades.naesinAll) {
+      var g = state.grades;
+      var map = { 'n-kor':g.naesinKor,'n-math':g.naesinMath,'n-eng':g.naesinEng,'n-inq':g.naesinInq,'n-all':g.naesinAll,
+                  'm-kor':g.mockKor,'m-math':g.mockMath,'m-eng':g.mockEng,'m-inq1':g.mockInq1,'m-inq2':g.mockInq2 };
+      Object.keys(map).forEach(function(k){ var e = document.getElementById(k); if (e && map[k]) e.value = map[k]; });
+      var mc = document.getElementById('m-choice'); if (mc) mc.value = g.mathChoice || '';
+    }
+    if (i === 2) restoreGroup('credit', state.credit);
+    if (i === 3) TYPES.forEach(function(t){ restoreGroup('type_' + t.key, state.types[t.key]); });
+    if (i === 4) FIELDS.forEach(function(f){ restoreGroup('field_' + f.key, state.fields[f.key]); });
+  }
+
+  function restoreGroup(g, arr){
+    if (!arr || !arr.length) return;
+    arr.forEach(function(v, i){
+      if (v === null || v === undefined) return;
+      var el = document.querySelector('input[name="' + g + '_' + i + '"][value="' + v + '"]');
+      if (el) { el.checked = true; markLabel(el); }
+    });
+  }
+
+  function markLabel(input){
+    var name = input.name;
+    document.querySelectorAll('input[name="' + name + '"]').forEach(function(el){
+      el.closest('label').classList.toggle('on', el.checked);
+    });
+  }
+
+  document.addEventListener('change', function(e){
+    if (e.target && e.target.type === 'radio') { markLabel(e.target); flashEl.classList.remove('on'); }
+  });
+
+  nextBtn.addEventListener('click', function(){
+    if (!state.started) { state.started = true; state.step = 0; render(); return; }
+    var err = STEPS[state.step].validate();
+    if (err) { flashEl.textContent = err; flashEl.classList.add('on'); return; }
+    flashEl.classList.remove('on');
+    if (state.step === STEPS.length - 1) { showResult(); return; }
+    state.step++;
+    render();
+  });
+
+  prevBtn.addEventListener('click', function(){
+    if (state.step === 0) return;
+    STEPS[state.step].validate();
+    flashEl.classList.remove('on');
+    state.step--;
+    render();
+  });
+
+  /* 결과 화면만 보고 싶을 때 쓰는 미리보기.
+     ?demo=1 을 붙여 열면 답을 무작위로 채워 결과만 보여 준다.
+     학원으로 전송하지 않으므로 실제 접수에 섞이지 않는다. */
+  function demoFill(){
+    var rnd = function(){ return Math.floor(Math.random() * 3); };
+    state.demo = true;
+    state.info = { name:'홍길동', phone:'010-0000-0000', school:'신현고', grade:'고3', agreed:true };
+    state.grades = {
+      naesinKor:2, naesinMath:3, naesinEng:2, naesinInq:2, naesinAll:2,
+      mockKor:2, mockMath:2, mockEng:1, mockInq1:3, mockInq2:3, mathChoice:'미적분'
+    };
+    state.credit = CREDIT.map(rnd);
+    TYPES.forEach(function(t){ state.types[t.key] = t.qs.map(rnd); });
+    FIELDS.forEach(function(f){ state.fields[f.key] = f.qs.map(rnd); });
+  }
+
+  // 주소에 ?demo=1 을 붙일 수 없는 곳(미리보기 링크 등)에서는
+  // 맨 위 '신내동 CLS에듀케이션' 을 세 번 누르면 같은 미리보기가 열린다.
+  (function(){
+    var el = document.querySelector('.brandline'), taps = 0, timer = null;
+    if (!el) return;
+    el.style.cursor = 'default';
+    el.addEventListener('click', function(){
+      taps++;
+      clearTimeout(timer);
+      timer = setTimeout(function(){ taps = 0; }, 1200);
+      if (taps >= 3) { taps = 0; demoFill(); showResult(); }
+    });
+  })();
+
+  if (/[?&]demo=1/.test(window.location.search)) {
+    demoFill();
+    showResult();
+  } else {
+    render();
+  }
+})();
+</script>
+</body>
+</html>
